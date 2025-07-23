@@ -166,7 +166,13 @@
       return;
     }
 
+    let previousMax = 0;
     const data = activityData[city].find(range => budget <= range.max);
+    for (const range of activityData[city]) {
+      if (budget <= range.max) break;
+      previousMax = range.max;
+    }
+
     if (!data) {
       activities.innerHTML = '<p>Ingen aktivitet matchar denna budget.</p>';
       return;
@@ -174,6 +180,7 @@
 
     const ul = document.createElement('ul');
     const cityName = cityDisplayNames[city];
+    const maxBudget = data.max;
     data.items.forEach(name => {
       const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " " + cityName)}`;
       const li = document.createElement('li');
@@ -181,7 +188,7 @@
       ul.appendChild(li);
     });
 
-    activities.innerHTML = `<h2>Aktiviteter i ${cityName} för under ${budget} kr</h2>`;
+    activities.innerHTML = `<h2>Aktiviteter i ${cityName} för mellan ${previousMax} - ${maxBudget} kr</h2>`;
     activities.appendChild(ul);
   });
 </script>
