@@ -43,10 +43,11 @@
 
     <script>
         document.getElementById('showBtn').addEventListener('click', visaAktiviteter);
+
         function visaAktiviteter() {
-            const city = document.getElementById("city").value;
-            const budgetKategori = document.getElementById("budgetCategory").value;
-            const resultDiv = document.getElementById("result");
+            const city = document.getElementById('city').value;
+            const budgetKategori = document.getElementById('budgetCategory').value;
+            const resultDiv = document.getElementById('result');
             let html = `<h2>Vald stad: ${city.toUpperCase()}</h2>`;
 
             function gLink(name, link, description) {
@@ -56,138 +57,135 @@
             const aktiviteter = {
                 murcia: {
                     gratis: [
-                        gLink("Catedral de Murcia", "https://www.regmurcia.com/servlet/s.Sl?sit=a,144,c,522,m,1075", "Katedral"),
-                        gLink("Plaza de las Flores", "https://www.tripadvisor.com/Attraction_Review-g187518-d12656566-Reviews-Plaza_de_las_Flores-Murcia.html", "Torg & café"),
-                        gLink("Jardín de Floridablanca", "https://www.murciaturistica.es/es/parque/jardin-de-floridablanca-2050/", "Park")
+                        gLink('Catedral de Murcia','https://www.regmurcia.com/servlet/s.Sl?sit=a,144,c,522,m,1075','Katedral'),
+                        gLink('Plaza de las Flores','https://www.tripadvisor.com/Attraction_Review-g187518-d12656566-Reviews-Plaza_de_las_Flores-Murcia.html','Torg & café'),
+                        gLink('Jardín de Floridablanca','https://www.murciaturistica.es/es/parque/jardin-de-floridablanca-2050/','Park')
                     ],
                     låg: [
-                        gLink("Real Casino de Murcia", "https://www.liveandinvestoverseas.com/country-hub/europe/spain/murcia/", "Historisk byggnad"),
-                        gLink("Museo Salzillo", "https://www.museosalzillo.es/", "Museum"),
-                        gLink("Museo de la Ciencia y el Agua", "https://cienciayagua.org/", "Vetenskapsmuseum")
+                        gLink('Real Casino de Murcia','https://www.liveandinvestoverseas.com/country-hub/europe/spain/murcia/','Historisk byggnad'),
+                        gLink('Museo Salzillo','https://www.museosalzillo.es/','Museum'),
+                        gLink('Museo de la Ciencia y el Agua','https://cienciayagua.org/','Vetenskapsmuseum')
                     ],
                     medel: [
-                        gLink("Terra Natura Murcia", "https://www.terranatura.com/", "Zoo & vattenpark"),
-                        gLink("Teatro Romea", "https://teatroromea.es/", "Teater"),
-                        gLink("Shopping i Nueva Condomina", "https://centrocomercialnuevacondomina.com/", "Shoppingcenter")
+                        gLink('Terra Natura Murcia','https://www.terranatura.com/','Zoo & vattenpark'),
+                        gLink('Teatro Romea','https://teatroromea.es/','Teater'),
+                        gLink('Shopping i Nueva Condomina','https://centrocomercialnuevacondomina.com/','Shoppingcenter')
                     ],
                     hög: [
-                        gLink("Vinprovning & rundtur", "https://www.getyourguide.se/murcia-l3484/vinprovning-tc104/", "Mat & dryck"),
-                        gLink("Guidad dagsutflykt till Cartagena", "https://www.viator.com/Costa-Blanca/d769-ttd", "Rundtur"),
-                        gLink("Ballongflyg över Murcia", "https://www.viator.com/tours/Murcia/Hot-Air-Balloon-Flight/d23012-19968P1", "Äventyrsaktivitet")
+                        gLink('Vinprovning & rundtur','https://www.getyourguide.se/murcia-l3484/vinprovning-tc104/','Mat & dryck'),
+                        gLink('Guidad dagsutflykt till Cartagena','https://www.viator.com/Costa-Blanca/d769-ttd','Rundtur'),
+                        gLink('Ballongflyg över Murcia','https://www.viator.com/tours/Murcia/Hot-Air-Balloon-Flight/d23012-19968P1','Äventyrsaktivitet')
                     ]
                 },
-                "san pedro": {
+                'san pedro': {
                     gratis: [
-                        gLink("Naturpark Salinas y Arenales", "https://www.turismomurcia.es/salinas-y-arenales/", "Naturreservat"),
-                        gLink("Promenad längs stranden", "https://www.tripadvisor.se/Attraction_Review-g644341-d12034470-Reviews-Playa_de_Villananitos-San_Pedro_del_Pinatar.html", "Strandpromenad"),
-                        gLink("Besök lokala marknader", "https://www.murciaturistica.es/en/shopping/markets/", "Marknad")
+                        gLink('Naturpark Salinas y Arenales','https://www.turismomurcia.es/salinas-y-arenales/','Naturreservat'),
+                        gLink('Promenad längs stranden','https://www.tripadvisor.se/Attraction_Review-g644341-d12034470-Reviews-Playa_de_Villananitos-San_Pedro_del_Pinatar.html','Strandpromenad'),
+                        gLink('Besök lokala marknader','https://www.murciaturistica.es/en/shopping/markets/','Marknad')
                     ],
                     låg: [
-                        gLink("Minigolf vid Playa de Villananitos", "https://minigolfsp.es/", "Minigolf"),
-                        gLink("Caféer & glassbarer", "https://www.tripadvisor.se/Restaurants-g644341-San_Pedro_del_Pinatar.html", "Fikaställe"),
-                        gLink("Torgaktiviteter på kvällen", "https://www.tripadvisor.se/Attractions-g644341-Activities-San_Pedro_del_Pinatar.html", "Nöje")
+                        gLink('Minigolf vid Playa de Villananitos','https://minigolfsp.es/','Minigolf'),
+                        gLink('Caféer & glassbarer','https://www.tripadvisor.se/Restaurants-g644341-San_Pedro_del_Pinatar.html','Fikaställe'),
+                        gLink('Torgaktiviteter på kvällen','https://www.tripadvisor.se/Attractions-g644341-Activities-San_Pedro_del_Pinatar.html','Nöje')
                     ],
                     medel: [
-                        gLink("Astronomikväll på Finca Astronómica", "https://www.astronomicasanpedro.es/", "Stjärnskådning"),
-                        gLink("Spa & avslappning", "https://www.thalasia.com/", "Spa"),
-                        gLink("Utflykt till naturreservat", "https://www.murciaturistica.es/en/nature/", "Utflykt")
+                        gLink('Astronomikväll på Finca Astronómica','https://www.astronomicasanpedro.es/','Stjärnskådning'),
+                        gLink('Spa & avslappning','https://www.thalasia.com/','Spa'),
+                        gLink('Utflykt till naturreservat','https://www.murciaturistica.es/en/nature/','Utflykt')
                     ],
                     hög: [
-                        gLink("Seglingstur från San Pedro", "https://www.getyourguide.se/san-pedro-del-pinatar-l170028/segling-tc51/", "Båtutflykt"),
-                        gLink("Premium spa-dag på Thalasia Thalasso", "https://www.thalasia.com/", "Spa & relax"),
-                        gLink("Privat guidad tur", "https://www.getyourguide.se/san-pedro-del-pinatar-l170028/", "Rundtur")
+                        gLink('Seglingstur från San Pedro','https://www.getyourguide.se/san-pedro-del-pinatar-l170028/segling-tc51/','Båtutflykt'),
+                        gLink('Premium spa-dag på Thalasia Thalasso','https://www.thalasia.com/','Spa & relax'),
+                        gLink('Privat guidad tur','https://www.getyourguide.se/san-pedro-del-pinatar-l170028/','Rundtur')
                     ]
                 },
                 torrevieja: {
                     gratis: [
-                        gLink("Strandpromenad Dique de Levante", "https://www.tripadvisor.se/Attraction_Review-g187527-d602246-Reviews-Dique_de_Levante_Breakwater-Torrevieja.html", "Promenad"),
-                        gLink("Lokala kyrkor", "https://turismodetorrevieja.com/en/places-of-worship/", "Kultur"),
-                        gLink("Street art", "https://www.tripadvisor.se/Attractions-g187527-Activities-c49-Torrevieja.html", "Konst")
+                        gLink('Strandpromenad Dique de Levante','https://www.tripadvisor.se/Attraction_Review-g187527-d602246-Reviews-Dique_de_Levante_Breakwater-Torrevieja.html','Promenad'),
+                        gLink('Lokala kyrkor','https://turismodetorrevieja.com/en/places-of-worship/','Kultur'),
+                        gLink('Street art','https://www.tripadvisor.se/Attractions-g187527-Activities-c49-Torrevieja.html','Konst')
                     ],
                     låg: [
-                        gLink("Aquopolis vattenpark", "https://www.aquopolis.es/torrevieja/", "Vattenpark"),
-                        gLink("Lokal marknad", "https://www.torrevieja.com/markets/", "Shopping"),
-                        gLink("Museo del Mar y de la Sal", "https://museomarysal.com/", "Museum")
+                        gLink('Aquopolis vattenpark','https://www.aquopolis.es/torrevieja/','Vattenpark'),
+                        gLink('Lokal marknad','https://www.torrevieja.com/markets/','Shopping'),
+                        gLink('Museo del Mar y de la Sal','https://museomarysal.com/','Museum')
                     ],
                     medel: [
-                        gLink("Escape Room 'La Cárcel'", "https://www.escapetorrevieja.es/", "Escape Room"),
-                        gLink("Båttur längs kusten", "https://www.viator.com/Torrevieja/d24235-ttd", "Båtutflykt"),
-                        gLink("Habaneras köpcentrum", "https://cc-habaneras.com/", "Shopping")
+                        gLink('Escape Room La Cárcel','https://www.escapetorrevieja.es/','Escape Room'),
+                        gLink('Båttur längs kusten','https://www.viator.com/Torrevieja/d24235-ttd','Båtutflykt'),
+                        gLink('Habaneras köpcentrum','https://cc-habaneras.com/','Shopping')
                     ],
                     hög: [
-                        gLink("Delfin- och valskådning", "https://www.viator.com/Torrevieja-tours/Whale-Watching/d24235-g3-c77", "Båtutflykt"),
-                        gLink("Lyxmiddag med havsutsikt", "https://www.tripadvisor.se/Restaurants-g187527-Torrevieja.html", "Restaurang"),
-                        gLink("Privat rundtur med guide", "https://www.getyourguide.se/torrevieja-l99549/", "Rundtur")
+                        gLink('Delfin- och valskådning','https://www.viator.com/Torrevieja-tours/Whale-Watching/d24235-g3-c77','Båtutflykt'),
+                        gLink('Lyxmiddag med havsutsikt','https://www.tripadvisor.se/Restaurants-g187527-Torrevieja.html','Restaurang'),
+                        gLink('Privat rundtur med guide','https://www.getyourguide.se/torrevieja-l99549/','Rundtur')
                     ]
                 },
                 malaga: {
                     gratis: [
-                        gLink("Stränder i Malaga", "https://www.spain.info/sv/upptack-spanien/10-strander-i-malaga/", "Strand"),
-                        gLink("Alcazaba (utomhusområde)", "https://www.malagaturismo.com/en/tourist-resources/detail/alcazaba/6", "Fästning"),
-                        gLink("Parque de Málaga", "https://www.malagaturismo.com/en/tourist-resources/detail/parque-de-malaga/54", "Park")
+                        gLink('Stränder i Malaga','https://www.spain.info/sv/upptack-spanien/10-strander-i-malaga/','Strand'),
+                        gLink('Alcazaba (utomhusområde)','https://www.malagaturismo.com/en/tourist-resources/detail/alcazaba/6','Fästning'),
+                        gLink('Parque de Málaga','https://www.malagaturismo.com/en/tourist-resources/detail/parque-de-malaga/54','Park')
                     ],
                     låg: [
-                        gLink("Picasso-museet", "https://www.museopicassomalaga.org/en", "Museum"),
-                        gLink("Centre Pompidou Málaga", "https://centrepompidou-malaga.eu/en", "Konstmuseum"),
-                        gLink("Museo del Vidrio y Cristal", "https://museovidrioycristalmalaga.com/", "Glasmuseum")
+                        gLink('Picasso-museet','https://www.museopicassomalaga.org/en','Museum'),
+                        gLink('Centre Pompidou Málaga','https://centrepompidou-malaga.eu/en','Konstmuseum'),
+                        gLink('Museo del Vidrio y Cristal','https://museovidrioycristalmalaga.com/','Glasmuseum')
                     ],
                     medel: [
-                        gLink("Castillo de Gibralfaro", "https://www.malagaturismo.com/en/tourist-resources/detail/gibralfaro-castle/7", "Fästning"),
-                        gLink("Båttur från hamnen", "https://www.getyourguide.se/malaga-l402/batturer-tc48/", "Båtutflykt"),
-                        gLink("Stadsrundtur med buss", "https://city-sightseeing.com/en/60/malaga", "Sightseeing")
+                        gLink('Castillo de Gibralfaro','https://www.malagaturismo.com/en/tourist-resources/detail/gibralfaro-castle/7','Fästning'),
+                        gLink('Båttur från hamnen','https://www.getyourguide.se/malaga-l402/batturer-tc48/','Båtutflykt'),
+                        gLink('Stadsrundtur med buss','https://city-sightseeing.com/en/60/malaga','Sightseeing')
                     ],
                     hög: [
-                        gLink("Vin- och tapasrundtur", "https://www.getyourguide.se/malaga-l402/mat-vinrundturer-tc105/", "Mat & dryck"),
-                        gLink("Ballongflyg över Malaga", "https://www.viator.com/Malaga-tours/Balloon-Rides/d956-g1-c3", "Äventyr"),
-                        gLink("Flamencoshow med middag", "https://www.getyourguide.se/malaga-l402/flamenco-turer-tc566/", "Show")
+                        gLink('Vin- och tapasrundtur','https://www.getyourguide.se/malaga-l402/mat-vinrundturer-tc105/','Mat & dryck'),
+                        gLink('Ballongflyg över Malaga','https://www.viator.com/Malaga-tours/Balloon-Rides/d956-g1-c3','Äventyr'),
+                        gLink('Flamencoshow med middag','https://www.getyourguide.se/malaga-l402/flamenco-turer-tc566/','Show')
                     ]
-
                 },
                 magaluf: {
                     gratis: [
-                        gLink("Strandpromenad i Magaluf", "https://www.seemallorca.com/beaches/magaluf-beach-majorca", "Strandpromenad"),
-                        gLink("Gatuunderhållning", "https://www.tripadvisor.se/Attractions-g580303.html", "Underhållning"),
-                        gLink("Solnedgång vid stranden", "https://www.seemallorca.com/beaches/magaluf-beach-majorca", "Solnedgång")
+                        gLink('Strandpromenad i Magaluf','https://www.seemallorca.com/beaches/magaluf-beach-majorca','Strandpromenad'),
+                        gLink('Gatuunderhållning','https://www.tripadvisor.se/Attractions-g580303.html','Underhållning'),
+                        gLink('Solnedgång vid stranden','https://www.seemallorca.com/beaches/magaluf-beach-majorca','Solnedgång')
                     ],
                     låg: [
-                        gLink("Minigolf Fantasia", "https://www.fantasiagolf.com/", "Minigolf"),
-                        gLink("Wave House Magaluf", "https://www.wavehousemallorca.com/", "Surf"),
-                        gLink("Aquapark i Magaluf", "https://www.westernpark.com/", "Vattenpark")
+                        gLink('Minigolf Fantasia','https://www.fantasiagolf.com/','Minigolf'),
+                        gLink('Wave House Magaluf','https://www.wavehousemallorca.com/','Surf'),
+                        gLink('Aquapark i Magaluf','https://www.westernpark.com/','Vattenpark')
                     ],
                     medel: [
-                        gLink("Katmandu Park", "https://www.katmandupark.com/", "Temapark"),
-                        gLink("Go-kart i Magaluf", "https://www.kartingmagaluf.com/", "Gokart"),
-                        gLink("Beach Club inträde", "https://www.nikibeach.com/", "Beach club")
+                        gLink('Katmandu Park','https://www.katmandupark.com/','Temapark'),
+                        gLink('Go-kart i Magaluf','https://www.kartingmagaluf.com/','Gokart'),
+                        gLink('Beach Club inträde','https://www.nikibeach.com/','Beach club')
                     ],
                     hög: [
-                        gLink("Jetski-tur i Magaluf", "https://www.getyourguide.se/magaluf-l126883/vattensporter-tc55/", "Jetski"),
-                        gLink("Katamaranutflykt med lunch", "https://www.getyourguide.se/magaluf-l126883/batturer-tc48/", "Katamaran"),
-                        gLink("Privat yachtcharter", "https://www.getyourguide.se/magaluf-l126883/privata-turer-tc221/", "Yacht")
+                        gLink('Jetski-tur i Magaluf','https://www.getyourguide.se/magaluf-l126883/vattensporter-tc55/','Jetski'),
+                        gLink('Katamaranutflykt med lunch','https://www.getyourguide.se/magaluf-l126883/batturer-tc48/','Katamaran'),
+                        gLink('Privat yachtcharter','https://www.getyourguide.se/magaluf-l126883/privata-turer-tc221/','Yacht')
                     ]
-
                 },
                 halmstad: {
                     gratis: [
-                        gLink("Promenad längs Nissan", "https://www.visithalland.com/articles/promenera-i-halmstad/", "Promenad"),
-                        gLink("Stadsbiblioteket i Halmstad", "https://www.halmstad.se/upplevagora/kultur/bibliotek.105.html", "Bibliotek"),
-                        gLink("Picassoparken", "https://www.halmstad.se/upplevagora/konst/konstverk/picassoskulpturenjacqueline.22319.html", "Park")
+                        gLink('Promenad längs Nissan','https://www.visithalland.com/articles/promenera-i-halmstad/','Promenad'),
+                        gLink('Stadsbiblioteket i Halmstad','https://www.halmstad.se/upplevagora/kultur/bibliotek.105.html','Bibliotek'),
+                        gLink('Picassoparken','https://www.halmstad.se/upplevagora/konst/konstverk/picassoskulpturenjacqueline.22319.html','Park')
                     ],
                     låg: [
-                        gLink("Halmstad Arena Bad", "https://www.halmstad.se/upplevagora/simhallar/halmstadarenabad.26158.html", "Bad")**,**
-                        gLink("Mjellby Konstmuseum", "https://www.mjellbykonstmuseum.se/", "Konstmuseum"),
-                        gLink("Halmstad Äventyrsland", "https://www.halmstadaventyrsland.se/", "Nöjespark")
+                        gLink('Halmstad Arena Bad','https://www.halmstad.se/upplevagora/simhallar/halmstadarenabad.26158.html','Bad'),
+                        gLink('Mjellby Konstmuseum','https://www.mjellbykonstmuseum.se/','Konstmuseum'),
+                        gLink('Halmstad Äventyrsland','https://www.halmstadaventyrsland.se/','Nöjespark')
                     ],
                     medel: [
-                        gLink("Padelmatch på Halmstad Padelcenter", "https://halmstadpadelcenter.se/", "Sport"),
-                        gLink("Lunch på lokal gårdsrestaurang", "https://www.tripadvisor.se/Restaurants-g189889-Halmstad.html", "Mat & dryck"),
-                        gLink("Escape Room Halmstad", "https://www.escaperoomhalland.se/", "Escape Room")
+                        gLink('Padelmatch på Halmstad Padelcenter','https://halmstadpadelcenter.se/','Sport'),
+                        gLink('Lunch på lokal gårdsrestaurang','https://www.tripadvisor.se/Restaurants-g189889-Halmstad.html','Mat & dryck'),
+                        gLink('Escape Room Halmstad','https://www.escaperoomhalland.se/','Escape Room')
                     ],
                     hög: [
-                        gLink("Vinprovning i Halmstad", "https://www.tripadvisor.se/Attraction_Review-g189889-d12244060-Reviews-Vinprovning_i_Halmstad.html", "Mat & dryck"),
-                        gLink("Lyxmiddag med utsikt", "https://www.tripadvisor.se/Restaurants-g189889-zfp58-Halmstad.html", "Restaurang"),
-                        gLink("Privat spa och relax", "https://www.tripadvisor.se/Attraction_Review-g189889-d17416049-Reviews-Ayurveda_Nordic.html", "Spa")
+                        gLink('Vinprovning i Halmstad','https://www.tripadvisor.se/Attraction_Review-g189889-d12244060-Reviews-Vinprovning_i_Halmstad.html','Mat & dryck'),
+                        gLink('Lyxmiddag med utsikt','https://www.tripadvisor.se/Restaurants-g189889-zfp58-Halmstad.html','Restaurang'),
+                        gLink('Privat spa och relax','https://www.tripadvisor.se/Attraction_Review-g189889-d17416049-Reviews-Ayurveda_Nordic.html','Spa')
                     ]
-
                 }
             };
 
