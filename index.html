@@ -61,13 +61,8 @@
             <option value="halmstad">Halmstad</option>
         </select>
 
-        <label for="budgetRange">Välj budgetkategori:</label>
-        <select id="budgetRange">
-            <option value="gratis">0 kr (Gratis)</option>
-            <option value="låg">1–500 kr</option>
-            <option value="medel">501–1000 kr</option>
-            <option value="hög">1001+ kr</option>
-        </select>
+        <label for="budget">Din budget per person (SEK):</label>
+        <input type="number" id="budget" />
 
         <button onclick="visaAktiviteter()">Visa aktiviteter</button>
 
@@ -77,158 +72,121 @@
     <script>
         function visaAktiviteter() {
             const city = document.getElementById("city").value;
-            const kategori = document.getElementById("budgetRange").value;
+            const budget = parseInt(document.getElementById("budget").value);
             const resultDiv = document.getElementById("result");
+            let html = `<h2>Vald stad: ${city.toUpperCase()}, Budget: ${budget} SEK</h2>`;
 
-            const cityName = city.charAt(0).toUpperCase() + city.slice(1);
-            let html = `<h2>Aktiviteter i ${cityName} – ${kategori === 'gratis' ? 'Gratis' : kategori === 'låg' ? '1–500 kr' : kategori === 'medel' ? '501–1000 kr' : '1001+ kr'}</h2><ul>`;
-
-            function gLink(name, city, description) {
-                const query = encodeURIComponent(`${name} ${city}`);
-                return `<li><a href='https://www.google.com/search?q=${query}' target='_blank'>${name}</a> – ${description}</li>`;
+            function gLink(name, link) {
+                return `<li><a href='${link}' target='_blank'>${name}</a></li>`;
             }
 
-            function addActivities(city, kategori) {
-                const aktiviteter = {
-                    murcia: {
-                        gratis: [
-                            gLink("Catedral de Murcia", city, "Katedral"),
-                            gLink("Plaza de las Flores", city, "Torg & caféer"),
-                            gLink("Jardín de Floridablanca", city, "Park")
-                        ],
-                        låg: [
-                            gLink("Real Casino de Murcia", city, "Historisk byggnad"),
-                            gLink("Museo Salzillo", city, "Museum"),
-                            gLink("Museo de la Ciencia y el Agua", city, "Vetenskapsmuseum")
-                        ],
-                        medel: [
-                            gLink("Terra Natura Murcia", city, "Zoo & vattenpark"),
-                            gLink("Teatro Romea", city, "Teaterföreställning"),
-                            gLink("Shopping i Nueva Condomina", city, "Shoppingcenter")
-                        ],
-                        hög: [
-                            gLink("Vinprovning & rundtur", city, "Mat & dryck"),
-                            gLink("Guidad dagsutflykt till Cartagena", city, "Heldagsupplevelse"),
-                            gLink("Ballongflyg över Murcia", city, "Äventyrsaktivitet")
-                        ]
-                    },
-                    "san pedro": {
-                        gratis: [
-                            gLink("Naturpark Salinas y Arenales", city, "Naturreservat"),
-                            gLink("Promenad längs stranden", city, "Strand"),
-                            gLink("Besök lokala marknader", city, "Shopping & mat")
-                        ],
-                        låg: [
-                            gLink("Minigolf vid Playa de Villananitos", city, "Minigolf"),
-                            gLink("Besök små caféer & glassbarer", city, "Fika"),
-                            gLink("Torgaktiviteter på kvällen", city, "Nöje")
-                        ],
-                        medel: [
-                            gLink("Astronomikväll på Finca Astronómica", city, "Stjärnskådning"),
-                            gLink("Spa & avslappning", city, "Wellness"),
-                            gLink("Utflykt till naturreservat", city, "Natur")
-                        ],
-                        hög: [
-                            gLink("Seglingstur från San Pedro", city, "Båtaktivitet"),
-                            gLink("Premium spa-dag på Thalasia Thalasso", city, "Spa"),
-                            gLink("Dagsutflykt med guide", city, "Rundtur")
-                        ]
-                    },
-                    torrevieja: {
-                        gratis: [
-                            gLink("Promenad längs strandpromenaden", city, "Strand & utsikt"),
-                            gLink("Besök lokala kyrkor", city, "Kultur"),
-                            gLink("Street art & skulpturer", city, "Gratis konst")
-                        ],
-                        låg: [
-                            gLink("Aquopolis vattenpark", city, "Vattenpark"),
-                            gLink("Besök lokal marknad", city, "Shopping"),
-                            gLink("Museo del Mar y de la Sal", city, "Museum")
-                        ],
-                        medel: [
-                            gLink("Escape Room 'La Cárcel'", city, "Escape room"),
-                            gLink("Båttur längs kusten", city, "Båtaktivitet"),
-                            gLink("Besök Habaneras köpcentrum", city, "Shopping")
-                        ],
-                        hög: [
-                            gLink("Delfin- och valskådningskryssning", city, "Båtutflykt"),
-                            gLink("Lyxmiddag med havsutsikt", city, "Restaurangupplevelse"),
-                            gLink("Privat rundtur med guide", city, "Guidning")
-                        ]
-                    },
-                    malaga: {
-                        gratis: [
-                            gLink("Stränder i Malaga", city, "Strand"),
-                            gLink("Alcazaba (utomhusområde)", city, "Historisk plats"),
-                            gLink("Parque de Málaga", city, "Park")
-                        ],
-                        låg: [
-                            gLink("Picasso-museet", city, "Konstmuseum"),
-                            gLink("Centre Pompidou Málaga", city, "Modern konst"),
-                            gLink("Museo del Vidrio y Cristal", city, "Glasmuseum")
-                        ],
-                        medel: [
-                            gLink("Castillo de Gibralfaro", city, "Fästning med utsikt"),
-                            gLink("Båttur från hamnen", city, "Kustupplevelse"),
-                            gLink("Museo Automovilístico", city, "Bil- och modedesign")
-                        ],
-                        hög: [
-                            gLink("Vin- och tapasrundtur", city, "Mat & dryck"),
-                            gLink("Luftballong över Malaga", city, "Äventyr"),
-                            gLink("Katamarankryssning i solnedgång", city, "Båtupplevelse")
-                        ]
-                    },
-                    magaluf: {
-                        gratis: [
-                            gLink("Strandpromenad i Magaluf", city, "Strand & vyer"),
-                            gLink("Gatuunderhållning på kvällen", city, "Nöje"),
-                            gLink("Solnedgång vid stranden", city, "Avkoppling")
-                        ],
-                        låg: [
-                            gLink("Minigolf Fantasia", city, "Minigolfpark"),
-                            gLink("Lokala marknader", city, "Shopping & mat"),
-                            gLink("Wave House Magaluf", city, "Surf & nöje")
-                        ],
-                        medel: [
-                            gLink("Katmandu Park", city, "Temapark & attraktioner"),
-                            gLink("Go-kart i Magaluf", city, "Motorsport"),
-                            gLink("Western Water Park", city, "Vattenpark")
-                        ],
-                        hög: [
-                            gLink("Jetski-tur i Magaluf", city, "Vattensport"),
-                            gLink("Katamaranutflykt med lunch", city, "Båtutflykt"),
-                            gLink("Privat båttur med snorkling", city, "Äventyr")
-                        ]
-                    },
-                    halmstad: {
-                        gratis: [
-                            gLink("Promenad längs Nissan", city, "Natur"),
-                            gLink("Stadsbiblioteket i Halmstad", city, "Kultur & läsning"),
-                            gLink("Picassoparken", city, "Konst & park")
-                        ],
-                        låg: [
-                            gLink("Halmstad Arena Bad", city, "Äventyrsbad"),
-                            gLink("Mjellby Konstmuseum", city, "Museum"),
-                            gLink("Teaterbesök", city, "Kulturupplevelse")
-                        ],
-                        medel: [
-                            gLink("Padelmatch på Halmstad Padelcenter", city, "Sportaktivitet"),
-                            gLink("Guidad tur på Galgberget", city, "Historia"),
-                            gLink("Lunch på lokal gårdsrestaurang", city, "Matupplevelse")
-                        ],
-                        hög: [
-                            gLink("Vin- och ostprovning", city, "Delikatessupplevelse"),
-                            gLink("Båttur längs kusten", city, "Natur & äventyr"),
-                            gLink("Lyxmiddag med utsikt", city, "Restaurangupplevelse")
-                        ]
-                    }
-                };
-                html += aktiviteter[city]?.[kategori]?.join('') || '<li>Inga aktiviteter hittades.</li>';
+            const aktiviteter = {
+                malaga: {
+                    gratis: [
+                        gLink("Stränder i Malaga", "https://www.spain.info/sv/upptack-spanien/10-strander-i-malaga/"),
+                        gLink("Alcazaba (utomhusområde)", "https://www.malagaturismo.com/en/tourist-resources/detail/alcazaba/6"),
+                        gLink("Parque de Málaga", "https://www.malagaturismo.com/en/tourist-resources/detail/parque-de-malaga/54"),
+                        gLink("Museo del Patrimonio Municipal (gratis inträde)", "https://museodelpatrimoniomunicipal.malaga.eu/"),
+                        gLink("Besöka Muelle Uno hamnpromenad", "https://www.muelleuno.com/en/")
+                    ],
+                    låg: [
+                        gLink("Picasso-museet", "https://www.museopicassomalaga.org/en"),
+                        gLink("Centre Pompidou Málaga", "https://centrepompidou-malaga.eu/en"),
+                        gLink("Museo del Vidrio y Cristal", "https://museovidrioycristalmalaga.com/"),
+                        gLink("Katedralen i Malaga", "https://www.catedralmalaga.es/"),
+                        gLink("Guidad tapastur", "https://www.getyourguide.com/malaga-l402/tapastour-lt/1/?partner_id=4YXKOV4")
+                    ],
+                    medel: [
+                        gLink("Castillo de Gibralfaro", "https://www.malagaturismo.com/en/tourist-resources/detail/gibralfaro-castle/7"),
+                        gLink("Båttur från hamnen", "https://www.getyourguide.se/malaga-l402/batturer-tc48/"),
+                        gLink("Museo Automovilístico", "https://museoautomovilmalaga.com/"),
+                        gLink("Stadsrundtur med buss", "https://city-sightseeing.com/en/60/malaga"),
+                        gLink("Guidade historiska vandringar", "https://www.getyourguide.se/malaga-l402/historiska-turer-tc21/")
+                    ],
+                    hög: [
+                        gLink("Vin- och tapasrundtur", "https://www.getyourguide.se/malaga-l402/mat-vinrundturer-tc105/"),
+                        gLink("Luftballong över Malaga", "https://www.viator.com/Malaga-tours/Balloon-Rides/d956-g1-c3"),
+                        gLink("Katamarankryssning i solnedgång", "https://www.getyourguide.se/malaga-l402/solnedgangskryssningar-tc1228/"),
+                        gLink("Privat helikoptertur", "https://www.getyourguide.se/malaga-l402/helikopterturer-tc44/"),
+                        gLink("Flamencoshow med middag", "https://www.getyourguide.se/malaga-l402/flamenco-turer-tc566/")
+                    ]
+                },
+                magaluf: {
+                    gratis: [
+                        gLink("Strandpromenad i Magaluf", "https://www.seemallorca.com/beaches/magaluf-beach-majorca"),
+                        gLink("Gatuunderhållning på kvällen", "https://www.tripadvisor.se/Attractions-g580303-Activities-Magaluf_Calvia_Majorca_Balearic_Islands.html"),
+                        gLink("Solnedgång vid stranden", "https://www.seemallorca.com/beaches/magaluf-beach-majorca"),
+                        gLink("Utforska Cala Vinyes", "https://www.seemallorca.com/beaches/cala-vinyes-beach-majorca"),
+                        gLink("Besök på lokala marknaden", "https://www.mallorca.com/shopping/markets")
+                    ],
+                    låg: [
+                        gLink("Minigolf Fantasia", "https://www.fantasiagolf.com/"),
+                        gLink("Lokala marknader", "https://www.mallorca.com/shopping/markets"),
+                        gLink("Wave House Magaluf", "https://www.wavehousemallorca.com/"),
+                        gLink("Aquapark i Magaluf", "https://www.westernpark.com/"),
+                        gLink("Bowling Magaluf", "https://www.tripadvisor.se/Attraction_Review-g580303-d12624884-Reviews-Splash_Bowling_Magaluf-Magaluf_Calvia_Majorca_Balearic_Islands.html")
+                    ],
+                    medel: [
+                        gLink("Katmandu Park", "https://www.katmandupark.com/"),
+                        gLink("Go-kart i Magaluf", "https://www.kartingmagaluf.com/"),
+                        gLink("Western Water Park", "https://www.westernpark.com/"),
+                        gLink("Snorklingsutflykt", "https://www.getyourguide.se/magaluf-l126883/snorkling-tc57/"),
+                        gLink("Beach Club inträde", "https://www.nikibeach.com/destinations/beach-clubs/mallorca/")
+                    ],
+                    hög: [
+                        gLink("Jetski-tur i Magaluf", "https://www.getyourguide.se/magaluf-l126883/vattensporter-tc55/"),
+                        gLink("Katamaranutflykt med lunch", "https://www.getyourguide.se/magaluf-l126883/batturer-tc48/"),
+                        gLink("Privat båttur med snorkling", "https://www.getyourguide.se/magaluf-l126883/snorkling-tc57/"),
+                        gLink("Lyxig middag & show", "https://www.piratesadventure.com/"),
+                        gLink("Privat yachtcharter", "https://www.getyourguide.se/magaluf-l126883/privata-turer-tc221/"),
+                    ]
+                },
+                halmstad: {
+                    gratis: [
+                        gLink("Promenad längs Nissan", "https://www.visithalland.com/articles/promenera-i-halmstad/"),
+                        gLink("Stadsbiblioteket i Halmstad", "https://www.halmstad.se/upplevagora/kultur/bibliotek.105.html"),
+                        gLink("Picassoparken", "https://www.halmstad.se/upplevagora/upplevaochgora/konsthallarkulturarvochmuseer/offentligkonst/konstverk/picassoskulpturenjacqueline.22319.html"),
+                        gLink("Besök Galgberget", "https://www.halmstad.se/upplevagora/friluftslivochnatur/utflyktsmal/galgberget.23371.html"),
+                        gLink("Upptäck Tylösand strand", "https://www.tylosand.se/strand")
+                    ],
+                    låg: [
+                        gLink("Halmstad Arena Bad", "https://www.halmstad.se/upplevagora/idrottmotionochfriluftsliv/simhallar/halmstadarenabad.26158.html"),
+                        gLink("Mjellby Konstmuseum", "https://www.mjellbykonstmuseum.se/"),
+                        gLink("Teaterbesök", "https://www.halmstadsteater.se/"),
+                        gLink("Halmstad Äventyrsland", "https://www.halmstadaventyrsland.se/"),
+                        gLink("Bowling i Halmstad", "https://www.rootsbowling.se/")
+                    ],
+                    medel: [
+                        gLink("Padelmatch på Halmstad Padelcenter", "https://halmstadpadelcenter.se/"),
+                        gLink("Guidad tur på Galgberget", "https://www.halmstad.se/upplevagora/friluftslivochnatur/utflyktsmal/galgberget.23371.html"),
+                        gLink("Lunch på lokal gårdsrestaurang", "https://www.tripadvisor.se/Restaurants-g189889-Halmstad_Halland_County_West_Coast.html"),
+                        gLink("Biljard eller shuffleboard", "https://thebullbar.se/"),
+                        gLink("Escape Room Halmstad", "https://www.escaperoomhalland.se/")
+                    ],
+                    hög: [
+                        gLink("Vin- och ostprovning", "https://www.tripadvisor.se/Attraction_Review-g189889-d12244060-Reviews-Vinprovning_i_Halmstad-Halmstad_Halland_County_West_Coast.html"),
+                        gLink("Båttur längs kusten", "https://www.getyourguide.se/halmstad-l101216/batturer-tc48/"),
+                        gLink("Lyxmiddag med utsikt", "https://www.tripadvisor.se/Restaurants-g189889-zfp58-Halmstad_Halland_County_West_Coast.html"),
+                        gLink("Golf på Tylösand", "https://www.tylosandsgk.se/"),
+                        gLink("Privat spa och relax", "https://www.tripadvisor.se/Attraction_Review-g189889-d17416049-Reviews-Ayurveda_Nordic-Halmstad_Halland_County_West_Coast.html")
+                    ]
+                }
+            };
+
+            let budgetKategori;
+            if (budget < 1) budgetKategori = "gratis";
+            else if (budget <= 500) budgetKategori = "låg";
+            else if (budget <= 1000) budgetKategori = "medel";
+            else budgetKategori = "hög";
+
+            if (aktiviteter[city] && aktiviteter[city][budgetKategori]) {
+                html += `<p>Aktiviteter (${budgetKategori}):</p><ul>`;
+                aktiviteter[city][budgetKategori].forEach(a => html += a);
+                html += "</ul>";
+            } else {
+                html += "<p>Inga aktiviteter hittades för vald stad och budget.</p>";
             }
 
-            addActivities(city, kategori);
-
-            html += "</ul>";
             resultDiv.innerHTML = html;
         }
     </script>
