@@ -69,111 +69,186 @@
     <div class="activities" id="activities"></div>
   </div>
 
-  <script>
-    const form = document.getElementById('form');
-    const activities = document.getElementById('activities');
-
-    const links = {
-      murcia: [
-        { max: 0, items: [
-          ["Catedral de Murcia", "https://www.regmurcia.com/servlet/s.Sl?sit=a,144,c,522,m,1075"],
-          ["Plaza de las Flores", "https://www.tripadvisor.com/Attraction_Review-g187518-d12656566-Reviews-Plaza_de_las_Flores-Murcia.html"],
-          ["Carrascoy & El Valle park", "https://www.murciaturistica.es/en/natural-park/carrascoy-and-el-valle-614/"],
-          ["Barrancos de Gebas", "https://www.murciaturistica.es/en/natural-park/barrancos-de-gebas-493/"]
-        ]},
-        { max: 200, items: [
-          ["Real Casino de Murcia", "https://www.liveandinvestoverseas.com/country-hub/europe/spain/murcia/"],
-          ["Plaza de las Flores", "https://en.wikipedia.org/wiki/Plaza_de_las_Flores_(Murcia)"],
-          ["Filmoteca Regional", "https://www.filmotecamurcia.es/"],
-          ["Cykelhyra", "https://www.bicicletasmurcia.com/"],
-          ["Museo Ramón Gaya", "https://museoramongaya.org/"],
-          ["Tapasrunda", "https://www.tripadvisor.se/Attractions-g187518-Activities-c36-t184-Murcia.html"]
-        ]},
-        { max: 500, items: [
-          ["Terra Natura", "https://www.getyourguide.com/murcia-l3484/terra-natura-murcia-ticket-entry"],
-          ["Rafting i Segura", "https://www.getyourguide.com/murcia-l3484/rafting-adventure-in-murcia"],
-          ["Guidad vandring + tapas", "https://www.tripadvisor.com/Attractions-g187518-Activities-c42-t224-Stadsrundturer-Murcia.html"],
-          ["Vandring i Carrascoy", "https://www.turismoregiondemurcia.es/en/natural_area/carrascoy-y-el-valle-4501/"],
-          ["Hästridning Carrascoy", "https://www.bestspur.com/tours/carriascy/"],
-          ["Spa Balneario", "https://www.balneariodearchena.com/"],
-          ["Kanottur Segura", "https://www.expedia.se/aktivitet/kanot-murcia"]
-        ]},
-        { max: 1000, items: [
-          ["Luftballongflyg", "https://www.getyourguide.com/murcia-l3484/ballongflyg"],
-          ["Vinprovning", "https://www.viator.com/tours/Murcia/Wine-Tastings"],
-          ["Matlagningskurs", "https://www.airbnb.se/experiences/chef-murcia"]
-        ]},
-      ],
-      torrevieja: [
-        { max: 0, items: [
-          ["Museo del Mar y de la Sal", "https://museomarysal.com/"],
-          ["Elche-marknad", "https://www.torrevieja.es/fiesta/elche-market"],
-          ["Kayakuthyrning", "https://www.kayaktorrevieja.es/"]
-        ]},
-        { max: 200, items: [
-          ["Aquopolis vattenpark", "https://www.aquopolis.es/torrevieja/"],
-          ["Parasailing", "https://www.getyourguide.com/torrevieja-l1653/parasailing"],
-          ["Escape Room La Cárcel", "https://www.escapetorrevieja.es/"]
-        ]},
-        { max: 500, items: [
-          // Lägg till fler vid behov
-        ]},
-        { max: 1000, items: [
-          ["Katamarantur", "https://www.tripadvisor.se/AttractionProductReview-g187517-d12345678"],
-          ["Delfin- & valskådning", "https://www.viator.com/tours/Torrevieja/Dolphin-Watching"],
-          ["Privat tapas- & vinrunda", "https://www.airbnb.se/experiences/torrevieja-food-tour"]
-        ]},
-      ],
-      sanpedro: [
-        { max: 0, items: [
-          ["Naturpark Salinas y Arenales", "https://www.turismomurcia.es/salinas-y-arenales/"],
-          ["Lerbad vid Mar Menor", "https://www.spain.info/sv/historic-sites/san-pedro-del-pinatar-mud-baths/"]
-        ]},
-        { max: 200, items: [
-          ["Museo Municipal", "https://www.murciaturistica.es/museo-municipal/"],
-          ["Minigolf Playa Villananitos", "https://minigolfsp.es/"],
-          ["SUP-uthyrning", "https://supmurcia.es/"]
-        ]},
-        { max: 500, items: [
-          ["Segway-äventyr", "https://www.segwaymurcia.com/"],
-          ["Astronomikväll", "https://www.astronomicasanpedro.es/"],
-          ["Båtutflykt & snorkling", "https://www.getyourguide.com/san-pedro/boat-snorkel"]
-        ]},
-        { max: 1000, items: [
-          ["Yacht-charter", "https://www.viator.com/tours/San-Pedro-Boat-Charter"],
-          ["Premium spa-dag", "https://www.thalasia.es/"],
-          ["Dykning i Mar Menor", "https://www.scubasanpedro.com/"]
-        ]},
-      ]
-    };
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const city = document.getElementById('city').value;
-      const budget = parseInt(document.getElementById('budget').value);
-      activities.innerHTML = '';
-
-      if (!links[city]) {
-        activities.innerHTML = '<p>Inga aktiviteter funna för vald stad.</p>';
-        return;
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semesteräventyr i Spanien</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    label, select, input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    .activities {
+      margin-top: 2rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 0.5rem;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Semesteräventyr i Spanien</h1>
+    <form id="form">
+      <label for="city">Välj en stad:</label>
+      <select id="city" required>
+        <option value="">-- Välj --</option>
+        <option value="murcia">Murcia</option>
+        <option value="torrevieja">Torrevieja</option>
+        <option value="sanpedro">San Pedro</option>
+      </select>
 
-      const data = links[city].find(range => budget <= range.max);
-      if (!data) {
-        activities.innerHTML = '<p>Ingen aktivitet matchar denna budget.</p>';
-        return;
-      }
+      <label for="budget">Budget (SEK):</label>
+      <input type="number" id="budget" min="0" required />
 
-      const ul = document.createElement('ul');
-      data.items.forEach(([name, url]) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${url}" target="_blank">${name}</a>`;
-        ul.appendChild(li);
-      });
+      <button type="submit">Visa aktiviteter</button>
+    </form>
 
-      activities.innerHTML = `<h2>Aktiviteter i ${city.charAt(0).toUpperCase() + city.slice(1)}</h2>`;
-      activities.appendChild(ul);
+    <div class="activities" id="activities"></div>
+  </div>
+
+<script>
+  const form = document.getElementById('form');
+  const activities = document.getElementById('activities');
+
+  const activityData = {
+    murcia: [
+      { max: 0, items: [
+        "Catedral de Murcia",
+        "Plaza de las Flores",
+        "Carrascoy & El Valle park",
+        "Barrancos de Gebas"
+      ]},
+      { max: 200, items: [
+        "Real Casino de Murcia",
+        "Plaza de las Flores tapas",
+        "Filmoteca Regional",
+        "Cykelhyra i centrum",
+        "Museo Ramón Gaya",
+        "Tapasrunda Platería"
+      ]},
+      { max: 500, items: [
+        "Terra Natura zoo",
+        "Rafting i Segura-floden",
+        "Guidad vandring + tapas",
+        "Vandring Carrascoy",
+        "Hästridning Carrascoy",
+        "Spa Balneario Archena",
+        "Kanottur Segura"
+      ]},
+      { max: 1000, items: [
+        "Luftballongflyg Murcia",
+        "Vinprovning vingård Murcia",
+        "Matlagningskurs lokal kock"
+      ]}
+    ],
+    torrevieja: [
+      { max: 0, items: [
+        "Museo del Mar y de la Sal",
+        "Elche-marknad Torrevieja",
+        "Kayakuthyrning Playa de los Náufragos"
+      ]},
+      { max: 200, items: [
+        "Aquopolis vattenpark",
+        "Parasailing Torrevieja",
+        "Escape Room La Cárcel"
+      ]},
+      { max: 500, items: [
+        "Snorkling i Torrevieja",
+        "SUP-äventyr Torrevieja",
+        "El Cura Beach aktiviteter"
+      ]},
+      { max: 1000, items: [
+        "Katamarantur Torrevieja",
+        "Delfin- & valskådning",
+        "Privat tapas- & vinrunda"
+      ]}
+    ],
+    sanpedro: [
+      { max: 0, items: [
+        "Naturpark Salinas y Arenales",
+        "Lerbad Mar Menor"
+      ]},
+      { max: 200, items: [
+        "Museo Municipal San Pedro",
+        "Minigolf Playa Villananitos",
+        "SUP uthyrning Mar Menor"
+      ]},
+      { max: 500, items: [
+        "Segwayäventyr San Pedro",
+        "Astronomikväll Finca",
+        "Båtutflykt snorkling San Pedro"
+      ]},
+      { max: 1000, items: [
+        "Yacht-charter San Pedro",
+        "Premium spa Thalasia",
+        "Dykning Mar Menor"
+      ]}
+    ]
+  };
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const city = document.getElementById('city').value;
+    const budget = parseInt(document.getElementById('budget').value);
+    activities.innerHTML = '';
+
+    if (!activityData[city]) {
+      activities.innerHTML = '<p>Inga aktiviteter funna för vald stad.</p>';
+      return;
+    }
+
+    const data = activityData[city].find(range => budget <= range.max);
+    if (!data) {
+      activities.innerHTML = '<p>Ingen aktivitet matchar denna budget.</p>';
+      return;
+    }
+
+    const ul = document.createElement('ul');
+    data.items.forEach(name => {
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " " + city)}`;
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${searchUrl}" target="_blank">${name}</a>`;
+      ul.appendChild(li);
     });
-  </script>
+
+    const cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1);
+    activities.innerHTML = `<h2>Aktiviteter i ${cityCapitalized}</h2>`;
+    activities.appendChild(ul);
+  });
+</script>
 </body>
 </html>
