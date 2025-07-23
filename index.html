@@ -5,47 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semesteraktiviteter i Spanien</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 1rem;
-            background-color: #f4f4f4;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        label, select, input, button {
-            display: block;
-            width: 100%;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            font-size: 1rem;
-        }
-        .result {
-            margin-top: 2rem;
-        }
-        ul {
-            padding-left: 1.2rem;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 0.5rem;
-            }
-        }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 1rem; background-color: #f4f4f4; }
+        h1, h2 { text-align: center; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 1rem; border-radius: 8px; }
+        label, select, button { display: block; width: 100%; margin-bottom: 1rem; padding: 0.5rem; font-size: 1rem; }
+        .result { margin-top: 2rem; }
+        ul { padding-left: 1.2rem; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { body { padding: 0.5rem; } }
     </style>
 </head>
 <body>
@@ -69,12 +37,12 @@
             <option value="hög">1000+ SEK</option>
         </select>
 
-        <button onclick="visaAktiviteter()">Visa aktiviteter</button>
-
+        <button id="showBtn">Visa aktiviteter</button>
         <div class="result" id="result"></div>
     </div>
 
     <script>
+        document.getElementById('showBtn').addEventListener('click', visaAktiviteter);
         function visaAktiviteter() {
             const city = document.getElementById("city").value;
             const budgetKategori = document.getElementById("budgetCategory").value;
@@ -173,6 +141,7 @@
                         gLink("Ballongflyg över Malaga", "https://www.viator.com/Malaga-tours/Balloon-Rides/d956-g1-c3", "Äventyr"),
                         gLink("Flamencoshow med middag", "https://www.getyourguide.se/malaga-l402/flamenco-turer-tc566/", "Show")
                     ]
+
                 },
                 magaluf: {
                     gratis: [
@@ -195,6 +164,7 @@
                         gLink("Katamaranutflykt med lunch", "https://www.getyourguide.se/magaluf-l126883/batturer-tc48/", "Katamaran"),
                         gLink("Privat yachtcharter", "https://www.getyourguide.se/magaluf-l126883/privata-turer-tc221/", "Yacht")
                     ]
+
                 },
                 halmstad: {
                     gratis: [
@@ -217,15 +187,14 @@
                         gLink("Lyxmiddag med utsikt", "https://www.tripadvisor.se/Restaurants-g189889-zfp58-Halmstad.html", "Restaurang"),
                         gLink("Privat spa och relax", "https://www.tripadvisor.se/Attraction_Review-g189889-d17416049-Reviews-Ayurveda_Nordic.html", "Spa")
                     ]
+
                 }
             };
 
             if (aktiviteter[city] && aktiviteter[city][budgetKategori]) {
-                html += "<ul>";
-                aktiviteter[city][budgetKategori].forEach(a => html += a);
-                html += "</ul>";
+                html += '<ul>' + aktiviteter[city][budgetKategori].join('') + '</ul>';
             } else {
-                html += "<p>Inga aktiviteter hittades för vald stad och priskategori.</p>";
+                html += '<p>Inga aktiviteter hittades för vald stad och priskategori.</p>';
             }
             resultDiv.innerHTML = html;
         }
