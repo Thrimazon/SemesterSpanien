@@ -70,6 +70,12 @@
   </div>
 
 <script>
+  const cityDisplayNames = {
+    murcia: "Murcia",
+    torrevieja: "Torrevieja",
+    sanpedro: "San Pedro"
+  };
+
   const form = document.getElementById('form');
   const activities = document.getElementById('activities');
 
@@ -167,15 +173,15 @@
     }
 
     const ul = document.createElement('ul');
+    const cityName = cityDisplayNames[city];
     data.items.forEach(name => {
-      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " " + city)}`;
+      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " " + cityName)}`;
       const li = document.createElement('li');
       li.innerHTML = `<a href="${searchUrl}" target="_blank">${name}</a>`;
       ul.appendChild(li);
     });
 
-    const cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1);
-    activities.innerHTML = `<h2>Aktiviteter i ${cityCapitalized}</h2>`;
+    activities.innerHTML = `<h2>Aktiviteter i ${cityName}</h2>`;
     activities.appendChild(ul);
   });
 </script>
