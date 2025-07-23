@@ -1,196 +1,99 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Semesteräventyr i Spanien</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background-color: #f4f4f4;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    label, select, input, button {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    .activities {
-      margin-top: 2rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      body {
-        padding: 0.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semesteraktiviteter i Spanien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .result {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        select, input[type="number"], button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Semesteräventyr i Spanien</h1>
-    <form id="form">
-      <label for="city">Välj en stad:</label>
-      <select id="city" required>
-        <option value="">-- Välj --</option>
+    <h1>Semesteraktiviteter i Spanien</h1>
+    <label for="city">Välj stad:</label><br>
+    <select id="city">
         <option value="murcia">Murcia</option>
         <option value="torrevieja">Torrevieja</option>
-        <option value="sanpedro">San Pedro</option>
-      </select>
+        <option value="san pedro">San Pedro</option>
+    </select><br>
 
-      <label for="budget">Budget (SEK):</label>
-      <input type="number" id="budget" min="0" required />
+    <label for="budget">Din budget per person (SEK):</label><br>
+    <input type="number" id="budget" /><br>
 
-      <button type="submit">Visa aktiviteter</button>
-    </form>
+    <button onclick="visaAktiviteter()">Visa aktiviteter</button>
 
-    <div class="activities" id="activities"></div>
-  </div>
+    <div class="result" id="result"></div>
 
-<script>
-  const cityDisplayNames = {
-    murcia: "Murcia",
-    torrevieja: "Torrevieja",
-    sanpedro: "San Pedro"
-  };
+    <script>
+        function visaAktiviteter() {
+            const city = document.getElementById("city").value;
+            const budget = parseInt(document.getElementById("budget").value);
+            const resultDiv = document.getElementById("result");
+            let html = `<h2>Vald stad: ${city.toUpperCase()}, Budget: ${budget} SEK</h2>`;
 
-  const form = document.getElementById('form');
-  const activities = document.getElementById('activities');
+            if (budget < 1) {
+                html += "<p>Gratisaktiviteter:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.regmurcia.com/servlet/s.Sl?sit=a,144,c,522,m,1075' target='_blank'>Catedral de Murcia</a> – Katedral</li>";
+                    html += "<li><a href='https://www.tripadvisor.com/Attraction_Review-g187518-d12656566-Reviews-Plaza_de_las_Flores-Murcia.html' target='_blank'>Plaza de las Flores</a> – Torg & caféer</li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://museomarysal.com/' target='_blank'>Museo del Mar y de la Sal</a> – Museum</li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.turismomurcia.es/salinas-y-arenales/' target='_blank'>Naturpark Salinas y Arenales</a> – Naturreservat</li>";
+                }
+                html += "</ul>";
+            } else if (budget <= 200) {
+                html += "<p>Aktiviteter mellan 1-200 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.liveandinvestoverseas.com/country-hub/europe/spain/murcia/' target='_blank'>Real Casino de Murcia</a> – Historisk byggnad</li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.aquopolis.es/torrevieja/' target='_blank'>Aquopolis vattenpark</a> – Vattenpark</li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://minigolfsp.es/' target='_blank'>Minigolf vid Playa de Villananitos</a> – Minigolf</li>";
+                }
+                html += "</ul>";
+            } else if (budget <= 500) {
+                html += "<p>Aktiviteter mellan 201-500 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.getyourguide.com/murcia-l3484/terra-natura-murcia-ticket-entry' target='_blank'>Terra Natura zoo & vattenpark</a> – Zoo & vattenpark</li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.escapetorrevieja.es/' target='_blank'>Escape Room 'La Cárcel'</a> – Escape room</li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.astronomicasanpedro.es/' target='_blank'>Astronomikväll på Finca Astronómica</a> – Stjärnskådning</li>";
+                }
+                html += "</ul>";
+            } else {
+                html += "<p>Aktiviteter mellan 501-1000 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.getyourguide.com/murcia-l3484/ballongflyg' target='_blank'>Luftballongflyg över Murcia</a> – Äventyrsaktivitet</li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.viator.com/dolphin-watching' target='_blank'>Delfin- och valskådningskryssning</a> – Båtutflykt</li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.thalasia.es/' target='_blank'>Premium spa-dag på Thalasia Thalasso</a> – Spa</li>";
+                }
+                html += "</ul>";
+            }
 
-  const activityData = {
-    murcia: [
-      { max: 0, items: [
-        "Catedral de Murcia",
-        "Plaza de las Flores",
-        "Carrascoy & El Valle park",
-        "Barrancos de Gebas"
-      ]},
-      { max: 200, items: [
-        "Real Casino de Murcia",
-        "Plaza de las Flores tapas",
-        "Filmoteca Regional",
-        "Cykelhyra i centrum",
-        "Museo Ramón Gaya",
-        "Tapasrunda Platería"
-      ]},
-      { max: 500, items: [
-        "Terra Natura zoo",
-        "Rafting i Segura-floden",
-        "Guidad vandring + tapas",
-        "Vandring Carrascoy",
-        "Hästridning Carrascoy",
-        "Spa Balneario Archena",
-        "Kanottur Segura"
-      ]},
-      { max: 1000, items: [
-        "Luftballongflyg Murcia",
-        "Vinprovning vingård Murcia",
-        "Matlagningskurs lokal kock"
-      ]}
-    ],
-    torrevieja: [
-      { max: 0, items: [
-        "Museo del Mar y de la Sal",
-        "Elche-marknad Torrevieja",
-        "Kayakuthyrning Playa de los Náufragos"
-      ]},
-      { max: 200, items: [
-        "Aquopolis vattenpark",
-        "Parasailing Torrevieja",
-        "Escape Room La Cárcel"
-      ]},
-      { max: 500, items: [
-        "Snorkling i Torrevieja",
-        "SUP-äventyr Torrevieja",
-        "El Cura Beach aktiviteter"
-      ]},
-      { max: 1000, items: [
-        "Katamarantur Torrevieja",
-        "Delfin- & valskådning",
-        "Privat tapas- & vinrunda"
-      ]}
-    ],
-    sanpedro: [
-      { max: 0, items: [
-        "Naturpark Salinas y Arenales",
-        "Lerbad Mar Menor"
-      ]},
-      { max: 200, items: [
-        "Museo Municipal San Pedro",
-        "Minigolf Playa Villananitos",
-        "SUP uthyrning Mar Menor"
-      ]},
-      { max: 500, items: [
-        "Segwayäventyr San Pedro",
-        "Astronomikväll Finca",
-        "Båtutflykt snorkling San Pedro"
-      ]},
-      { max: 1000, items: [
-        "Yacht-charter San Pedro",
-        "Premium spa Thalasia",
-        "Dykning Mar Menor"
-      ]}
-    ]
-  };
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const city = document.getElementById('city').value;
-    const budget = parseInt(document.getElementById('budget').value);
-    activities.innerHTML = '';
-
-    if (!activityData[city]) {
-      activities.innerHTML = '<p>Inga aktiviteter funna för vald stad.</p>';
-      return;
-    }
-
-    let previousMax = 0;
-    const data = activityData[city].find(range => budget <= range.max);
-    for (const range of activityData[city]) {
-      if (budget <= range.max) break;
-      previousMax = range.max;
-    }
-
-    if (!data) {
-      activities.innerHTML = '<p>Ingen aktivitet matchar denna budget.</p>';
-      return;
-    }
-
-    const ul = document.createElement('ul');
-    const cityName = cityDisplayNames[city];
-    const maxBudget = data.max;
-    data.items.forEach(name => {
-      const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + " " + cityName)}`;
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${searchUrl}" target="_blank">${name}</a>`;
-      ul.appendChild(li);
-    });
-
-    activities.innerHTML = `<h2>Aktiviteter i ${cityName} för mellan ${previousMax} - ${maxBudget} kr</h2>`;
-    activities.appendChild(ul);
-  });
-</script>
+            resultDiv.innerHTML = html;
+        }
+    </script>
 </body>
 </html>
