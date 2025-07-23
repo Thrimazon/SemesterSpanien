@@ -90,8 +90,72 @@
 
             function addActivities(city, kategori) {
                 const aktiviteter = {
-                    // tidigare städer (murcia, san pedro, torrevieja) finns kvar oförändrade
-                    // lägg till de som saknas
+                    murcia: {
+                        gratis: [
+                            gLink("Catedral de Murcia", city, "Katedral"),
+                            gLink("Plaza de las Flores", city, "Torg & caféer"),
+                            gLink("Jardín de Floridablanca", city, "Park")
+                        ],
+                        låg: [
+                            gLink("Real Casino de Murcia", city, "Historisk byggnad"),
+                            gLink("Museo Salzillo", city, "Museum"),
+                            gLink("Museo de la Ciencia y el Agua", city, "Vetenskapsmuseum")
+                        ],
+                        medel: [
+                            gLink("Terra Natura Murcia", city, "Zoo & vattenpark"),
+                            gLink("Teatro Romea", city, "Teaterföreställning"),
+                            gLink("Shopping i Nueva Condomina", city, "Shoppingcenter")
+                        ],
+                        hög: [
+                            gLink("Vinprovning & rundtur", city, "Mat & dryck"),
+                            gLink("Guidad dagsutflykt till Cartagena", city, "Heldagsupplevelse"),
+                            gLink("Ballongflyg över Murcia", city, "Äventyrsaktivitet")
+                        ]
+                    },
+                    "san pedro": {
+                        gratis: [
+                            gLink("Naturpark Salinas y Arenales", city, "Naturreservat"),
+                            gLink("Promenad längs stranden", city, "Strand"),
+                            gLink("Besök lokala marknader", city, "Shopping & mat")
+                        ],
+                        låg: [
+                            gLink("Minigolf vid Playa de Villananitos", city, "Minigolf"),
+                            gLink("Besök små caféer & glassbarer", city, "Fika"),
+                            gLink("Torgaktiviteter på kvällen", city, "Nöje")
+                        ],
+                        medel: [
+                            gLink("Astronomikväll på Finca Astronómica", city, "Stjärnskådning"),
+                            gLink("Spa & avslappning", city, "Wellness"),
+                            gLink("Utflykt till naturreservat", city, "Natur")
+                        ],
+                        hög: [
+                            gLink("Seglingstur från San Pedro", city, "Båtaktivitet"),
+                            gLink("Premium spa-dag på Thalasia Thalasso", city, "Spa"),
+                            gLink("Dagsutflykt med guide", city, "Rundtur")
+                        ]
+                    },
+                    torrevieja: {
+                        gratis: [
+                            gLink("Promenad längs strandpromenaden", city, "Strand & utsikt"),
+                            gLink("Besök lokala kyrkor", city, "Kultur"),
+                            gLink("Street art & skulpturer", city, "Gratis konst")
+                        ],
+                        låg: [
+                            gLink("Aquopolis vattenpark", city, "Vattenpark"),
+                            gLink("Besök lokal marknad", city, "Shopping"),
+                            gLink("Museo del Mar y de la Sal", city, "Museum")
+                        ],
+                        medel: [
+                            gLink("Escape Room 'La Cárcel'", city, "Escape room"),
+                            gLink("Båttur längs kusten", city, "Båtaktivitet"),
+                            gLink("Besök Habaneras köpcentrum", city, "Shopping")
+                        ],
+                        hög: [
+                            gLink("Delfin- och valskådningskryssning", city, "Båtutflykt"),
+                            gLink("Lyxmiddag med havsutsikt", city, "Restaurangupplevelse"),
+                            gLink("Privat rundtur med guide", city, "Guidning")
+                        ]
+                    },
                     malaga: {
                         gratis: [
                             gLink("Stränder i Malaga", city, "Strand"),
