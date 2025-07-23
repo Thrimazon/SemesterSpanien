@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semesteraktiviteter i Spanien</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .result {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        select, input[type="number"], button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Semesteraktiviteter i Spanien</h1>
+    <label for="city">Välj stad:</label><br>
+    <select id="city">
+        <option value="murcia">Murcia</option>
+        <option value="torrevieja">Torrevieja</option>
+        <option value="san pedro">San Pedro</option>
+    </select><br>
+
+    <label for="budget">Din budget per person (SEK):</label><br>
+    <input type="number" id="budget" /><br>
+
+    <button onclick="visaAktiviteter()">Visa aktiviteter</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function visaAktiviteter() {
+            const city = document.getElementById("city").value;
+            const budget = parseInt(document.getElementById("budget").value);
+            const resultDiv = document.getElementById("result");
+            let html = `<h2>Vald stad: ${city.toUpperCase()}, Budget: ${budget} SEK</h2>`;
+
+            if (budget < 1) {
+                html += "<p>Gratisaktiviteter:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.regmurcia.com/servlet/s.Sl?sit=a,144,c,522,m,1075' target='_blank'>Catedral de Murcia</a></li>";
+                    html += "<li><a href='https://www.tripadvisor.com/Attraction_Review-g187518-d12656566-Reviews-Plaza_de_las_Flores-Murcia.html' target='_blank'>Plaza de las Flores</a></li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://museomarysal.com/' target='_blank'>Museo del Mar y de la Sal</a></li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.turismomurcia.es/salinas-y-arenales/' target='_blank'>Naturpark Salinas y Arenales</a></li>";
+                }
+                html += "</ul>";
+            } else if (budget <= 200) {
+                html += "<p>Aktiviteter mellan 1-200 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.liveandinvestoverseas.com/country-hub/europe/spain/murcia/' target='_blank'>Real Casino de Murcia</a></li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.aquopolis.es/torrevieja/' target='_blank'>Aquopolis vattenpark</a></li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://minigolfsp.es/' target='_blank'>Minigolf vid Playa de Villananitos</a></li>";
+                }
+                html += "</ul>";
+            } else if (budget <= 500) {
+                html += "<p>Aktiviteter mellan 201-500 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.getyourguide.com/murcia-l3484/terra-natura-murcia-ticket-entry' target='_blank'>Terra Natura zoo & vattenpark</a></li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.escapetorrevieja.es/' target='_blank'>Escape Room 'La Cárcel'</a></li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.astronomicasanpedro.es/' target='_blank'>Astronomikväll på Finca Astronómica</a></li>";
+                }
+                html += "</ul>";
+            } else {
+                html += "<p>Aktiviteter mellan 501-1000 kr:</p><ul>";
+                if (city === "murcia") {
+                    html += "<li><a href='https://www.getyourguide.com/murcia-l3484/ballongflyg' target='_blank'>Luftballongflyg över Murcia</a></li>";
+                } else if (city === "torrevieja") {
+                    html += "<li><a href='https://www.viator.com/dolphin-watching' target='_blank'>Delfin- och valskådningskryssning</a></li>";
+                } else if (city === "san pedro") {
+                    html += "<li><a href='https://www.thalasia.es/' target='_blank'>Premium spa-dag på Thalasia Thalasso</a></li>";
+                }
+                html += "</ul>";
+            }
+
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
