@@ -88,79 +88,79 @@
                 return `<li><a href='https://www.google.com/search?q=${query}' target='_blank'>${name}</a> – ${description}</li>`;
             }
 
-            function addActivities(city, kategori, htmlOutput) {
+            function addActivities(city, kategori) {
                 const aktiviteter = {
-                    halmstad: {
+                    murcia: {
                         gratis: [
-                            gLink("Promenad längs Nissan", city, "Natur"),
-                            gLink("Halmstads Stadsbibliotek", city, "Kultur"),
-                            gLink("Norre Katts park", city, "Park")
+                            gLink("Catedral de Murcia", city, "Katedral"),
+                            gLink("Plaza de las Flores", city, "Torg & caféer"),
+                            gLink("Museo Ramon Gaya (gratis söndagar)", city, "Konstmuseum")
                         ],
                         låg: [
-                            gLink("Halmstad Arena Bad", city, "Äventyrsbad"),
-                            gLink("Föreställning på Halmstad Teater", city, "Teater"),
-                            gLink("Skateparken i Linehed", city, "Sport")
+                            gLink("Real Casino de Murcia", city, "Historisk byggnad"),
+                            gLink("Museo de la Ciencia y el Agua", city, "Vetenskapsmuseum"),
+                            gLink("Teatro Circo", city, "Föreställning")
                         ],
                         medel: [
-                            gLink("Padel i Halmstad", city, "Sportaktivitet"),
-                            gLink("Mjellby konstmuseum", city, "Museum"),
-                            gLink("Lunch på lokal gårdsrestaurang", city, "Matupplevelse")
+                            gLink("Terra Natura", city, "Zoo & vattenpark"),
+                            gLink("Paintball Murcia", city, "Aktivitet"),
+                            gLink("Escape Room Murcia", city, "Escape Room")
                         ],
                         hög: [
-                            gLink("Guidad naturvandring", city, "Guidning"),
-                            gLink("Vin- och ostprovning", city, "Delikatessprovning"),
-                            gLink("Båtutflykt längs kusten", city, "Naturupplevelse")
+                            gLink("Ballongflyg Murcia", city, "Ballongflyg"),
+                            gLink("Vinprovning med tapas", city, "Mat & dryck"),
+                            gLink("Privat guidad tur", city, "Turistguide")
                         ]
                     },
-                    malaga: {
+                    torrevieja: {
                         gratis: [
-                            gLink("Stränder i Malaga", city, "Strand"),
-                            gLink("Alcazaba (utanför)", city, "Historisk plats"),
-                            gLink("Gratis kulturevenemang", city, "Kultur")
+                            gLink("Promenad längs Paseo Marítimo", city, "Havsutsikt"),
+                            gLink("Besök på Salinas de Torrevieja", city, "Naturupplevelse"),
+                            gLink("Parque de las Naciones", city, "Park & lekplats")
                         ],
                         låg: [
-                            gLink("Picasso-museet", city, "Museum"),
-                            gLink("Parque de Málaga", city, "Park"),
-                            gLink("Engelska kyrkogården", city, "Historia & natur")
+                            gLink("Museo del Mar y de la Sal", city, "Museum"),
+                            gLink("Aquopolis vattenpark", city, "Vattenpark"),
+                            gLink("Bowling Torrevieja", city, "Bowling")
                         ],
                         medel: [
-                            gLink("Caminito del Rey", city, "Vandringsled"),
-                            gLink("Castillo de Gibralfaro", city, "Fästning"),
-                            gLink("Bilmuseum Malaga", city, "Museum")
+                            gLink("Mini golf Torrevieja", city, "Nöje"),
+                            gLink("Båtutflykt till ön Tabarca", city, "Båtutflykt"),
+                            gLink("Escape Room 'La Cárcel'", city, "Escape Room")
                         ],
                         hög: [
-                            gLink("Vin- & tapasrundtur", city, "Mat & dryck"),
-                            gLink("Luftballong över Malaga", city, "Äventyr"),
-                            gLink("Katamarantur i solnedgång", city, "Båtutflykt")
+                            gLink("Delfinsafari", city, "Båt & natur"),
+                            gLink("Jetski vid stranden", city, "Vattensport"),
+                            gLink("Privat fisketur", city, "Båtaktivitet")
                         ]
                     },
-                    magaluf: {
+                    "san pedro": {
                         gratis: [
-                            gLink("Promenadstråket Magaluf", city, "Promenad"),
-                            gLink("Stränder", city, "Sol & bad"),
-                            gLink("Gatuunderhållning", city, "Gratisnöje")
+                            gLink("Naturpark Salinas y Arenales", city, "Naturreservat"),
+                            gLink("Promenad längs strandpromenaden", city, "Hav & motion"),
+                            gLink("Besök på småbåtshamnen", city, "Hamn & caféer")
                         ],
                         låg: [
-                            gLink("Katmandu Park (promenadområde & lek)", city, "Temapark"),
-                            gLink("Wave House utsiktsplats", city, "Utsikt & surf"),
-                            gLink("Lokala marknader", city, "Shopping & lokalmat")
+                            gLink("Minigolf vid Playa de Villananitos", city, "Minigolf"),
+                            gLink("Cafébesök i centrum", city, "Fika"),
+                            gLink("Besök på lokal marknad", city, "Shopping & lokalmat")
                         ],
                         medel: [
-                            gLink("Katmandu Park (inträde)", city, "Temapark"),
-                            gLink("Western Water Park", city, "Vattenpark"),
-                            gLink("Go-karting", city, "Aktivitet")
+                            gLink("Astronomikväll på Finca Astronómica", city, "Stjärnskådning"),
+                            gLink("Cykelhyra för kusttur", city, "Aktivitet"),
+                            gLink("Lunch på strandrestaurang", city, "Matupplevelse")
                         ],
                         hög: [
-                            gLink("Katamaranutflykt Magaluf", city, "Båtutflykt"),
-                            gLink("Jetski i Magaluf", city, "Vattensport"),
-                            gLink("House of Katmandu", city, "Attraktion")
+                            gLink("Spadag på Thalasia Thalasso", city, "Spa"),
+                            gLink("Seglingskurs", city, "Vattensport"),
+                            gLink("Vinprovning & middag", city, "Gourmetupplevelse")
                         ]
                     }
                 };
                 html += aktiviteter[city]?.[kategori]?.join('') || '<li>Inga aktiviteter hittades.</li>';
             }
 
-            addActivities(city, kategori, html);
+            addActivities(city, kategori);
 
             html += "</ul>";
             resultDiv.innerHTML = html;
