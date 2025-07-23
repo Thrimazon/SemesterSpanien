@@ -84,61 +84,89 @@
             }
 
             if (budget < 1) {
-                if (city === "halmstad") {
-                    html += gLink("Promenad längs Nissan", city, "Natur");
-                    html += gLink("Halmstads Stadsbibliotek", city, "Kultur");
-                    html += gLink("Norre Katts park", city, "Park");
-                } else if (city === "malaga") {
-                    html += gLink("Stränder i Malaga", city, "Strand");
-                    html += gLink("Alcazaba (utanför)", city, "Historisk plats");
-                    html += gLink("Gratis kulturevenemang", city, "Kultur");
-                } else if (city === "magaluf") {
-                    html += gLink("Promenadstråket Magaluf", city, "Promenad");
-                    html += gLink("Stränder", city, "Sol & bad");
-                    html += gLink("Gatuunderhållning", city, "Gratisnöje");
-                }
-            } else if (budget <= 200) {
-                if (city === "halmstad") {
-                    html += gLink("Halmstad Arena Bad", city, "Äventyrsbad");
-                    html += gLink("Föreställning på Halmstad Teater", city, "Teater");
-                    html += gLink("Skateparken i Linehed", city, "Sport");
-                } else if (city === "malaga") {
-                    html += gLink("Picasso-museet", city, "Museum");
-                    html += gLink("Parque de Málaga", city, "Park");
-                    html += gLink("Engelska kyrkogården", city, "Historia & natur");
-                } else if (city === "magaluf") {
-                    html += gLink("Katmandu Park (promenadområde & lek)", city, "Temapark");
-                    html += gLink("Wave House utsiktsplats", city, "Utsikt & surf");
-                    html += gLink("Lokala marknader", city, "Shopping & lokalmat");
-                }
+                // Gratisaktiviteter
+                addActivities(city, "gratis", html);
             } else if (budget <= 500) {
-                if (city === "halmstad") {
-                    html += gLink("Padel i Halmstad", city, "Sportaktivitet");
-                    html += gLink("Mjellby konstmuseum", city, "Museum");
-                    html += gLink("Lunch på lokal gårdsrestaurang", city, "Matupplevelse");
-                } else if (city === "malaga") {
-                    html += gLink("Caminito del Rey", city, "Vandringsled");
-                    html += gLink("Castillo de Gibralfaro", city, "Fästning");
-                    html += gLink("Bilmuseum Malaga", city, "Museum");
-                } else if (city === "magaluf") {
-                    html += gLink("Katmandu Park (inträde)", city, "Temapark");
-                    html += gLink("Western Water Park", city, "Vattenpark");
-                    html += gLink("Go-karting", city, "Aktivitet");
-                }
+                // 1 - 500 kr
+                addActivities(city, "låg", html);
+            } else if (budget <= 1000) {
+                // 501 - 1000 kr
+                addActivities(city, "medel", html);
             } else {
-                if (city === "halmstad") {
-                    html += gLink("Guidad naturvandring", city, "Guidning");
-                    html += gLink("Vin- och ostprovning", city, "Delikatessprovning");
-                    html += gLink("Båtutflykt längs kusten", city, "Naturupplevelse");
-                } else if (city === "malaga") {
-                    html += gLink("Vin- & tapasrundtur", city, "Mat & dryck");
-                    html += gLink("Luftballong över Malaga", city, "Äventyr");
-                    html += gLink("Katamarantur i solnedgång", city, "Båtutflykt");
-                } else if (city === "magaluf") {
-                    html += gLink("Katamaranutflykt Magaluf", city, "Båtutflykt");
-                    html += gLink("Jetski i Magaluf", city, "Vattensport");
-                    html += gLink("House of Katmandu", city, "Attraktion");
-                }
+                // 1001+ kr
+                addActivities(city, "hög", html);
+            }
+
+            function addActivities(city, kategori, htmlOutput) {
+                const aktiviteter = {
+                    halmstad: {
+                        gratis: [
+                            gLink("Promenad längs Nissan", city, "Natur"),
+                            gLink("Halmstads Stadsbibliotek", city, "Kultur"),
+                            gLink("Norre Katts park", city, "Park")
+                        ],
+                        låg: [
+                            gLink("Halmstad Arena Bad", city, "Äventyrsbad"),
+                            gLink("Föreställning på Halmstad Teater", city, "Teater"),
+                            gLink("Skateparken i Linehed", city, "Sport")
+                        ],
+                        medel: [
+                            gLink("Padel i Halmstad", city, "Sportaktivitet"),
+                            gLink("Mjellby konstmuseum", city, "Museum"),
+                            gLink("Lunch på lokal gårdsrestaurang", city, "Matupplevelse")
+                        ],
+                        hög: [
+                            gLink("Guidad naturvandring", city, "Guidning"),
+                            gLink("Vin- och ostprovning", city, "Delikatessprovning"),
+                            gLink("Båtutflykt längs kusten", city, "Naturupplevelse")
+                        ]
+                    },
+                    malaga: {
+                        gratis: [
+                            gLink("Stränder i Malaga", city, "Strand"),
+                            gLink("Alcazaba (utanför)", city, "Historisk plats"),
+                            gLink("Gratis kulturevenemang", city, "Kultur")
+                        ],
+                        låg: [
+                            gLink("Picasso-museet", city, "Museum"),
+                            gLink("Parque de Málaga", city, "Park"),
+                            gLink("Engelska kyrkogården", city, "Historia & natur")
+                        ],
+                        medel: [
+                            gLink("Caminito del Rey", city, "Vandringsled"),
+                            gLink("Castillo de Gibralfaro", city, "Fästning"),
+                            gLink("Bilmuseum Malaga", city, "Museum")
+                        ],
+                        hög: [
+                            gLink("Vin- & tapasrundtur", city, "Mat & dryck"),
+                            gLink("Luftballong över Malaga", city, "Äventyr"),
+                            gLink("Katamarantur i solnedgång", city, "Båtutflykt")
+                        ]
+                    },
+                    magaluf: {
+                        gratis: [
+                            gLink("Promenadstråket Magaluf", city, "Promenad"),
+                            gLink("Stränder", city, "Sol & bad"),
+                            gLink("Gatuunderhållning", city, "Gratisnöje")
+                        ],
+                        låg: [
+                            gLink("Katmandu Park (promenadområde & lek)", city, "Temapark"),
+                            gLink("Wave House utsiktsplats", city, "Utsikt & surf"),
+                            gLink("Lokala marknader", city, "Shopping & lokalmat")
+                        ],
+                        medel: [
+                            gLink("Katmandu Park (inträde)", city, "Temapark"),
+                            gLink("Western Water Park", city, "Vattenpark"),
+                            gLink("Go-karting", city, "Aktivitet")
+                        ],
+                        hög: [
+                            gLink("Katamaranutflykt Magaluf", city, "Båtutflykt"),
+                            gLink("Jetski i Magaluf", city, "Vattensport"),
+                            gLink("House of Katmandu", city, "Attraktion")
+                        ]
+                    }
+                };
+                html += aktiviteter[city]?.[kategori]?.join('') || '<li>Inga aktiviteter hittades.</li>';
             }
 
             html += "</ul>";
