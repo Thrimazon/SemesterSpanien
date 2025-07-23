@@ -58,6 +58,7 @@
             <option value="san pedro">San Pedro</option>
             <option value="malaga">Malaga</option>
             <option value="magaluf">Magaluf</option>
+            <option value="halmstad">Halmstad</option>
         </select>
 
         <label for="budget">Din budget per person (SEK):</label>
@@ -77,45 +78,66 @@
             const cityName = city.charAt(0).toUpperCase() + city.slice(1);
             let html = `<h2>Aktiviteter i ${cityName} för ${budget <= 0 ? 'gratis' : budget + ' kr'}</h2><ul>`;
 
+            function gLink(name, city, description) {
+                const query = encodeURIComponent(`${name} ${city}`);
+                return `<li><a href='https://www.google.com/search?q=${query}' target='_blank'>${name}</a> – ${description}</li>`;
+            }
+
             if (budget < 1) {
-                if (city === "malaga") {
-                    html += "<li><a href='https://www.malagaturismo.com/en/tourist-resources/detail/the-beaches/99' target='_blank'>Stränder i Malaga</a> – Strand</li>";
-                    html += "<li><a href='https://www.andalucia.com/cities/malaga/alcazaba.htm' target='_blank'>Alcazaba (utanför)</a> – Historisk plats</li>";
-                    html += "<li><a href='https://www.malagaturismo.com/en/eventos' target='_blank'>Gratis kulturevenemang</a> – Kultur</li>";
+                if (city === "halmstad") {
+                    html += gLink("Promenad längs Nissan", city, "Natur");
+                    html += gLink("Halmstads Stadsbibliotek", city, "Kultur");
+                    html += gLink("Norre Katts park", city, "Park");
+                } else if (city === "malaga") {
+                    html += gLink("Stränder i Malaga", city, "Strand");
+                    html += gLink("Alcazaba (utanför)", city, "Historisk plats");
+                    html += gLink("Gratis kulturevenemang", city, "Kultur");
                 } else if (city === "magaluf") {
-                    html += "<li><a href='https://www.majorcadailybulletin.com/holiday/life-style/2019/06/10/55867/the-magaluf-promenade.html' target='_blank'>Promenadstråket Magaluf</a> – Promenad</li>";
-                    html += "<li><a href='https://www.mallorca.com/beaches/magaluf' target='_blank'>Stränder</a> – Sol & bad</li>";
-                    html += "<li><a href='https://www.abc-mallorca.com/free-things-to-do/' target='_blank'>Gatuunderhållning</a> – Gratisnöje</li>";
+                    html += gLink("Promenadstråket Magaluf", city, "Promenad");
+                    html += gLink("Stränder", city, "Sol & bad");
+                    html += gLink("Gatuunderhållning", city, "Gratisnöje");
                 }
             } else if (budget <= 200) {
-                if (city === "malaga") {
-                    html += "<li><a href='https://www.museopicassomalaga.org/' target='_blank'>Picasso-museet</a> – Museum</li>";
-                    html += "<li><a href='https://www.visitacostadelsol.com/planifica-tu-viaje/que-ver-y-que-hacer/parque-de-malaga-p18491' target='_blank'>Parque de Málaga</a> – Park</li>";
-                    html += "<li><a href='https://www.malagaturismo.com/en/tourist-resources/detail/english-cemetery/233' target='_blank'>Engelska kyrkogården</a> – Historia & natur</li>";
+                if (city === "halmstad") {
+                    html += gLink("Halmstad Arena Bad", city, "Äventyrsbad");
+                    html += gLink("Föreställning på Halmstad Teater", city, "Teater");
+                    html += gLink("Skateparken i Linehed", city, "Sport");
+                } else if (city === "malaga") {
+                    html += gLink("Picasso-museet", city, "Museum");
+                    html += gLink("Parque de Málaga", city, "Park");
+                    html += gLink("Engelska kyrkogården", city, "Historia & natur");
                 } else if (city === "magaluf") {
-                    html += "<li><a href='https://www.katmandupark.com/' target='_blank'>Katmandu Park (promenadområde & lek)</a> – Temapark</li>";
-                    html += "<li><a href='https://www.tripadvisor.com/Attraction_Review-g580303-d4413034-Reviews-Wave_House-Magaluf_Calvia_Majorca_Balearic_Islands.html' target='_blank'>Wave House utsiktsplats</a> – Utsikt & surf</li>";
-                    html += "<li><a href='https://www.mallorca.com/magaluf/markets' target='_blank'>Lokala marknader</a> – Shopping & lokalmat</li>";
+                    html += gLink("Katmandu Park (promenadområde & lek)", city, "Temapark");
+                    html += gLink("Wave House utsiktsplats", city, "Utsikt & surf");
+                    html += gLink("Lokala marknader", city, "Shopping & lokalmat");
                 }
             } else if (budget <= 500) {
-                if (city === "malaga") {
-                    html += "<li><a href='https://www.caminitodelrey.info/en/' target='_blank'>Caminito del Rey</a> – Vandringsled</li>";
-                    html += "<li><a href='https://www.malagaturismo.com/en/tourist-resources/detail/gibralfaro-castle/96' target='_blank'>Castillo de Gibralfaro</a> – Fästning</li>";
-                    html += "<li><a href='https://automobilemuseum.eu/' target='_blank'>Bilmuseum Malaga</a> – Museum</li>";
+                if (city === "halmstad") {
+                    html += gLink("Padel i Halmstad", city, "Sportaktivitet");
+                    html += gLink("Mjellby konstmuseum", city, "Museum");
+                    html += gLink("Lunch på lokal gårdsrestaurang", city, "Matupplevelse");
+                } else if (city === "malaga") {
+                    html += gLink("Caminito del Rey", city, "Vandringsled");
+                    html += gLink("Castillo de Gibralfaro", city, "Fästning");
+                    html += gLink("Bilmuseum Malaga", city, "Museum");
                 } else if (city === "magaluf") {
-                    html += "<li><a href='https://www.katmandupark.com/' target='_blank'>Katmandu Park (inträde)</a> – Temapark</li>";
-                    html += "<li><a href='https://www.aquapark.es/en/' target='_blank'>Western Water Park</a> – Vattenpark</li>";
-                    html += "<li><a href='https://www.mallorca.com/go-karting-magaluf' target='_blank'>Go-karting</a> – Aktivitet</li>";
+                    html += gLink("Katmandu Park (inträde)", city, "Temapark");
+                    html += gLink("Western Water Park", city, "Vattenpark");
+                    html += gLink("Go-karting", city, "Aktivitet");
                 }
             } else {
-                if (city === "malaga") {
-                    html += "<li><a href='https://www.viator.com/tours/Malaga/Malaga-Wine-Tour-and-Tapas-Tasting/d956-5800WINE' target='_blank'>Vin- & tapasrundtur</a> – Mat & dryck</li>";
-                    html += "<li><a href='https://www.getyourguide.com/malaga-l402/malaga-hot-air-balloon-ride-t419798/' target='_blank'>Luftballong över Malaga</a> – Äventyr</li>";
-                    html += "<li><a href='https://www.getyourguide.com/malaga-l402/sunset-catamaran-cruise-in-malaga-t359645/' target='_blank'>Katamarantur i solnedgång</a> – Båtutflykt</li>";
+                if (city === "halmstad") {
+                    html += gLink("Guidad naturvandring", city, "Guidning");
+                    html += gLink("Vin- och ostprovning", city, "Delikatessprovning");
+                    html += gLink("Båtutflykt längs kusten", city, "Naturupplevelse");
+                } else if (city === "malaga") {
+                    html += gLink("Vin- & tapasrundtur", city, "Mat & dryck");
+                    html += gLink("Luftballong över Malaga", city, "Äventyr");
+                    html += gLink("Katamarantur i solnedgång", city, "Båtutflykt");
                 } else if (city === "magaluf") {
-                    html += "<li><a href='https://www.getyourguide.com/magaluf-l1268/catamaran-tour-with-lunch-in-mallorca-t435643/' target='_blank'>Katamaranutflykt Magaluf</a> – Båtutflykt</li>";
-                    html += "<li><a href='https://www.viator.com/tours/Mallorca/Jet-Ski-Tour-in-Magaluf/d955-333786P1' target='_blank'>Jetski i Magaluf</a> – Vattensport</li>";
-                    html += "<li><a href='https://www.tripadvisor.com/Attraction_Review-g580303-d602868-Reviews-House_of_Katmandu-Magaluf_Calvia_Majorca_Balearic_Islands.html' target='_blank'>House of Katmandu</a> – Attraktion</li>";
+                    html += gLink("Katamaranutflykt Magaluf", city, "Båtutflykt");
+                    html += gLink("Jetski i Magaluf", city, "Vattensport");
+                    html += gLink("House of Katmandu", city, "Attraktion");
                 }
             }
 
