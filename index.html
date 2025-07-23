@@ -61,8 +61,13 @@
             <option value="halmstad">Halmstad</option>
         </select>
 
-        <label for="budget">Din budget per person (SEK):</label>
-        <input type="number" id="budget" />
+        <label for="budgetRange">Välj budgetkategori:</label>
+        <select id="budgetRange">
+            <option value="gratis">0 kr (Gratis)</option>
+            <option value="låg">1–500 kr</option>
+            <option value="medel">501–1000 kr</option>
+            <option value="hög">1001+ kr</option>
+        </select>
 
         <button onclick="visaAktiviteter()">Visa aktiviteter</button>
 
@@ -72,29 +77,15 @@
     <script>
         function visaAktiviteter() {
             const city = document.getElementById("city").value;
-            const budget = parseInt(document.getElementById("budget").value);
+            const kategori = document.getElementById("budgetRange").value;
             const resultDiv = document.getElementById("result");
 
             const cityName = city.charAt(0).toUpperCase() + city.slice(1);
-            let html = `<h2>Aktiviteter i ${cityName} för ${budget <= 0 ? 'gratis' : budget + ' kr'}</h2><ul>`;
+            let html = `<h2>Aktiviteter i ${cityName} – ${kategori === 'gratis' ? 'Gratis' : kategori === 'låg' ? '1–500 kr' : kategori === 'medel' ? '501–1000 kr' : '1001+ kr'}</h2><ul>`;
 
             function gLink(name, city, description) {
                 const query = encodeURIComponent(`${name} ${city}`);
                 return `<li><a href='https://www.google.com/search?q=${query}' target='_blank'>${name}</a> – ${description}</li>`;
-            }
-
-            if (budget < 1) {
-                // Gratisaktiviteter
-                addActivities(city, "gratis", html);
-            } else if (budget <= 500) {
-                // 1 - 500 kr
-                addActivities(city, "låg", html);
-            } else if (budget <= 1000) {
-                // 501 - 1000 kr
-                addActivities(city, "medel", html);
-            } else {
-                // 1001+ kr
-                addActivities(city, "hög", html);
             }
 
             function addActivities(city, kategori, htmlOutput) {
@@ -168,6 +159,8 @@
                 };
                 html += aktiviteter[city]?.[kategori]?.join('') || '<li>Inga aktiviteter hittades.</li>';
             }
+
+            addActivities(city, kategori, html);
 
             html += "</ul>";
             resultDiv.innerHTML = html;
