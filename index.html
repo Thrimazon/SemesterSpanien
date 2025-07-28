@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semesteraktiviteter i Spanien</title>
+    <title>Semesteraktiviteter</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 1rem; background-color: #f4f4f4; }
         h1, h2 { text-align: center; }
@@ -57,139 +57,158 @@
             }
 
             const aktiviteter = {
-                murcia: {
-                    gratis: [
-                        gLink('Catedral de Murcia', 'Katedral'),
-                        gLink('Plaza de las Flores', 'Torg & café'),
-                        gLink('Jardín de Floridablanca', 'Park')
-                    ],
-                    låg: [
-                        gLink('Real Casino de Murcia', 'Historisk byggnad'),
-                        gLink('Museo Salzillo', 'Museum'),
-                        gLink('Museo de la Ciencia y el Agua', 'Vetenskapsmuseum')
-                    ],
-                    medel: [
-                        gLink('Terra Natura Murcia', 'Zoo & vattenpark'),
-                        gLink('Teatro Romea', 'Teater'),
-                        gLink('Shopping i Nueva Condomina', 'Shoppingcenter')
-                    ],
-                    hög: [
-                        gLink('Vinprovning & rundtur', 'Mat & dryck'),
-                        gLink('Guidad dagsutflykt till Cartagena', 'Rundtur'),
-                        gLink('Ballongflyg över Murcia', 'Äventyrsaktivitet')
-                    ]
-                },
-                'san pedro': {
-                    gratis: [
-                        gLink('Naturpark Salinas y Arenales', 'Naturreservat'),
-                        gLink('Promenad längs stranden', 'Strandpromenad'),
-                        gLink('Besök lokala marknader', 'Marknad')
-                    ],
-                    låg: [
-                        gLink('Minigolf vid Playa de Villananitos', 'Minigolf'),
-                        gLink('Caféer & glassbarer', 'Fikaställe'),
-                        gLink('Torgaktiviteter på kvällen', 'Nöje')
-                    ],
-                    medel: [
-                        gLink('Astronomikväll på Finca Astronómica', 'Stjärnskådning'),
-                        gLink('Spa & avslappning', 'Spa'),
-                        gLink('Utflykt till naturreservat', 'Utflykt')
-                    ],
-                    hög: [
-                        gLink('Seglingstur från San Pedro', 'Båtutflykt'),
-                        gLink('Premium spa-dag på Thalasia Thalasso', 'Spa & relax'),
-                        gLink('Privat guidad tur', 'Rundtur')
-                    ]
-                },
-                torrevieja: {
-                    gratis: [
-                        gLink('Strandpromenad Dique de Levante', 'Promenad'),
-                        gLink('Lokala kyrkor', 'Kultur'),
-                        gLink('Street art', 'Konst')
-                    ],
-                    låg: [
-                        gLink('Aquopolis vattenpark', 'Vattenpark'),
-                        gLink('Lokal marknad', 'Shopping'),
-                        gLink('Museo del Mar y de la Sal', 'Museum')
-                    ],
-                    medel: [
-                        gLink('Escape Room La Cárcel', 'Escape Room'),
-                        gLink('Båttur längs kusten', 'Båtutflykt'),
-                        gLink('Habaneras köpcentrum', 'Shopping')
-                    ],
-                    hög: [
-                        gLink('Delfin- och valskådning', 'Båtutflykt'),
-                        gLink('Lyxmiddag med havsutsikt', 'Restaurang'),
-                        gLink('Privat rundtur med guide', 'Rundtur')
-                    ]
-                },
-                malaga: {
-                    gratis: [
-                        gLink('Stränder i Malaga', 'Strand'),
-                        gLink('Alcazaba (utomhusområde)', 'Fästning'),
-                        gLink('Parque de Málaga', 'Park')
-                    ],
-                    låg: [
-                        gLink('Picasso-museet', 'Museum'),
-                        gLink('Centre Pompidou Málaga', 'Konstmuseum'),
-                        gLink('Museo del Vidrio y Cristal', 'Glasmuseum')
-                    ],
-                    medel: [
-                        gLink('Castillo de Gibralfaro', 'Fästning'),
-                        gLink('Båttur från hamnen', 'Båtutflykt'),
-                        gLink('Stadsrundtur med buss', 'Sightseeing')
-                    ],
-                    hög: [
-                        gLink('Vin- och tapasrundtur', 'Mat & dryck'),
-                        gLink('Ballongflyg över Malaga', 'Äventyr'),
-                        gLink('Flamencoshow med middag', 'Show')
-                    ]
-                },
-                magaluf: {
-                    gratis: [
-                        gLink('Strandpromenad i Magaluf', 'Strandpromenad'),
-                        gLink('Gatuunderhållning', 'Underhållning'),
-                        gLink('Solnedgång vid stranden', 'Solnedgång')
-                    ],
-                    låg: [
-                        gLink('Minigolf Fantasia', 'Minigolf'),
-                        gLink('Wave House Magaluf', 'Surf'),
-                        gLink('Aquapark i Magaluf', 'Vattenpark')
-                    ],
-                    medel: [
-                        gLink('Katmandu Park', 'Temapark'),
-                        gLink('Go-kart i Magaluf', 'Gokart'),
-                        gLink('Beach Club inträde', 'Beach club')
-                    ],
-                    hög: [
-                        gLink('Jetski-tur i Magaluf', 'Jetski'),
-                        gLink('Katamaranutflykt med lunch', 'Katamaran'),
-                        gLink('Privat yachtcharter', 'Yacht')
-                    ]
-                },
-                halmstad: {
-                    gratis: [
-                        gLink('Promenad längs Nissan', 'Promenad'),
-                        gLink('Stadsbiblioteket i Halmstad', 'Bibliotek'),
-                        gLink('Picassoparken', 'Park')
-                    ],
-                    låg: [
-                        gLink('Halmstad Arena Bad', 'Bad'),
-                        gLink('Mjellby Konstmuseum', 'Konstmuseum'),
-                        gLink('Halmstad Äventyrsland', 'Nöjespark')
-                    ],
-                    medel: [
-                        gLink('Padelmatch på Halmstad Padelcenter', 'Sport'),
-                        gLink('Lunch på lokal gårdsrestaurang', 'Mat & dryck'),
-                        gLink('Escape Room Halmstad', 'Escape Room')
-                    ],
-                    hög: [
-                        gLink('Vinprovning i Halmstad', 'Mat & dryck'),
-                        gLink('Lyxmiddag med utsikt', 'Restaurang'),
-                        gLink('Privat spa och relax', 'Spa')
-                    ]
-                }
-            };
+    murcia: {
+        gratis: [
+            gLink('Catedral de Murcia', 'Katedral'),
+            gLink('Plaza de las Flores', 'Torg & café'),
+            gLink('Jardín de Floridablanca', 'Park'),
+            gLink('Murcias gamla stadskärna', 'Historisk promenad'),
+            gLink('Besök till marknaden Mercado de Verónicas', 'Lokal marknad')
+        ],
+        låg: [
+            gLink('Real Casino de Murcia', 'Historisk byggnad'),
+            gLink('Museo Salzillo', 'Museum'),
+            gLink('Museo de la Ciencia y el Agua', 'Vetenskapsmuseum'),
+            gLink('Kaffe & churros vid Plaza Circular', 'Fikapaus'),
+            gLink('Flamenco-kväll på lokal bar', 'Kulturupplevelse')
+        ],
+        medel: [
+            gLink('Terra Natura Murcia', 'Zoo & vattenpark'),
+            gLink('Teatro Romea', 'Teater'),
+            gLink('Shopping i Nueva Condomina', 'Shoppingcenter'),
+            gLink('Guidad stadspromenad', 'Historisk tur'),
+            gLink('Keramikverkstad med handledning', 'Kreativ aktivitet')
+        ],
+        hög: [
+            gLink('Vinprovning & rundtur', 'Mat & dryck'),
+            gLink('Guidad dagsutflykt till Cartagena', 'Rundtur'),
+            gLink('Ballongflyg över Murcia', 'Äventyrsaktivitet'),
+            gLink('Lyxmiddag med vinpaket', 'Restaurang'),
+            gLink('Privat spadag', 'Avkoppling')
+        ]
+    },
+    'san pedro': {
+        gratis: [
+            gLink('Naturpark Salinas y Arenales', 'Naturreservat'),
+            gLink('Promenad längs stranden', 'Strandpromenad'),
+            gLink('Besök lokala marknader', 'Marknad'),
+            gLink('Fågelskådning i våtmarkerna', 'Naturupplevelse'),
+            gLink('Upplev solnedgången vid Playa de la Llana', 'Strandaktivitet')
+        ],
+        låg: [
+            gLink('Minigolf vid Playa de Villananitos', 'Minigolf'),
+            gLink('Caféer & glassbarer', 'Fikaställe'),
+            gLink('Torgaktiviteter på kvällen', 'Nöje'),
+            gLink('Cykeluthyrning längs kusten', 'Cykeltur'),
+            gLink('Båtmuseum i Lo Pagán', 'Museum')
+        ],
+        medel: [
+            gLink('Astronomikväll på Finca Astronómica', 'Stjärnskådning'),
+            gLink('Spa & avslappning', 'Spa'),
+            gLink('Utflykt till naturreservat', 'Utflykt'),
+            gLink('Kajakuthyrning', 'Vattenaktivitet'),
+            gLink('Matlagningskurs med lokala ingredienser', 'Kurs')
+        ],
+        hög: [
+            gLink('Seglingstur från San Pedro', 'Båtutflykt'),
+            gLink('Premium spa-dag på Thalasia Thalasso', 'Spa & relax'),
+            gLink('Privat guidad tur', 'Rundtur'),
+            gLink('Jetski vid Lo Pagán', 'Vattensport'),
+            gLink('Romantisk middag med havsutsikt', 'Restaurang')
+        ]
+    },
+    torrevieja: {
+        gratis: [
+            gLink('Promenad Dique de Levante', 'Strandpromenad'),
+            gLink('Saltjöarna i Parque Natural', 'Naturreservat'),
+            gLink('Iglesia Arciprestal Virgen del Rosario', 'Kyrka'),
+            gLink('Promenad i hamnen', 'Hamnpromenad'),
+            gLink('Street art-vandring', 'Konst & graffiti')
+        ],
+        låg: [
+            gLink('Aquopolis Torrevieja', 'Vattenpark'),
+            gLink('Lokala marknaden Mercado del Pueblo', 'Marknad'),
+            gLink('Museo del Mar y de la Sal', 'Museum'),
+            gLink('Kanotuthyrning i lagunerna', 'Vattenaktivitet'),
+            gLink('Tur med turisttåg', 'Sightseeing')
+        ],
+        medel: [
+            gLink('Escape Room La Cárcel', 'Escape Room'),
+            gLink('Solnedgångskryssning (kort)', 'Båttur'),
+            gLink('Stand-up paddle board', 'Vattenaktivitet'),
+            gLink('Paella-kurs med lokal kock', 'Matlagningskurs'),
+            gLink('Guidad kajaktur & snorkling', 'Utflykt')
+        ],
+        hög: [
+            gLink('Delfin- och valskådning (heldag)', 'Båttur'),
+            gLink('Lyxig yachtcharter vid solnedgång', 'Båtutflykt'),
+            gLink('Privat busstur till inlandet', 'Rundtur'),
+            gLink('Parasailing över kusten', 'Äventyrsaktivitet'),
+            gLink('Gourmetmiddag på strandrestaurang', 'Mat & dryck')
+        ]
+    },
+    halmstad: {
+        gratis: [
+            gLink('Promenad längs Nissan', 'Stadspromenad'),
+            gLink('Picassoparken', 'Park & konst'),
+            gLink('Öppet hus på Halmstad slott', 'Historisk byggnad'),
+            gLink('Galleri Norre Port', 'Konstgalleri'),
+            gLink('Stadsbiblioteket i Halmstad', 'Bibliotek')
+        ],
+        låg: [
+            gLink('Halmstad Arena Bad', 'Bad & äventyrsbad'),
+            gLink('Mjellby Konstmuseum', 'Konstmuseum'),
+            gLink('Halmstad Äventyrsland (rabatterat inträde)', 'Nöjespark'),
+            gLink('Cykeluthyrning i stadsparken', 'Cykelutflykt'),
+            gLink('Guidad stadsvandring', 'Historisk tur')
+        ],
+        medel: [
+            gLink('Padelmatch på Halmstad Padelcenter', 'Sportaktivitet'),
+            gLink('Escape Room Halmstad', 'Escape Room'),
+            gLink('Matlagningskurs på Badhotellet', 'Kurs'),
+            gLink('Kanottur på Nissan med guide', 'Vattenaktivitet'),
+            gLink('Ölprovning på Bryggeri Nobel', 'Dryckesprovning')
+        ],
+        hög: [
+            gLink('Vinprovning på Östra bryggeri', 'Dryckesprovning'),
+            gLink('Lyxmiddag på Hotel Tylösand', 'Restaurang'),
+            gLink('Spa-dag på SeaU Spa', 'Spa & relax'),
+            gLink('Privat solnedgångskryssning', 'Båttur'),
+            gLink('Helikoptertur över kusten', 'Äventyrsaktivitet')
+        ]
+    },
+    alicante: {
+        gratis: [
+            gLink('Castillo de Santa Bárbara', 'Fästning & utsikt'),
+            gLink('Explanada de España', 'Promenad & mosaik'),
+            gLink('Mercado Central de Alicante', 'Mat- & råvarumarknad'),
+            gLink('Parque Canalejas', 'Stadspark'),
+            gLink('MACA utomhusskulpturer', 'Konst & skulpturer')
+        ],
+        låg: [
+            gLink('Ruins of Lucentum', 'Arkeologisk plats'),
+            gLink('MARQ – Arkeologiskt museum', 'Museum'),
+            gLink('Spårvagn till San Juan Beach', 'Transport & strand'),
+            gLink('Båt till Tabarca (ekonomibiljett)', 'Utflykt'),
+            gLink('Golfkartuthyrning vid stranden', 'Strandaktivitet')
+        ],
+        medel: [
+            gLink('Heldagsbåt till Tabarca med lunch', 'Båttur & mat'),
+            gLink('Guidad tapasrundtur', 'Mat & kultur'),
+            gLink('Yoga på SUP-bräda', 'Vattenaktivitet'),
+            gLink('Escape Room Alicante', 'Escape Room'),
+            gLink('Segway-tur i stan', 'Sightseeing')
+        ],
+        hög: [
+            gLink('Privat jetski-uthyrning', 'Äventyrsaktivitet'),
+            gLink('Lyxig katamarancharter med middag', 'Båtutflykt'),
+            gLink('Flyboard-session', 'Vattensport'),
+            gLink('Helikoptertur längs kusten', 'Äventyrsaktivitet'),
+            gLink('Gourmetmiddag på Monastrell', 'Stjärnrestaurang')
+        ]
+    }
+};
+
 
             if (aktiviteter[city] && aktiviteter[city][budgetKategori]) {
                 html += '<ul>' + aktiviteter[city][budgetKategori].join('') + '</ul>';
