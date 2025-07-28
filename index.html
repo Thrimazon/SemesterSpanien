@@ -27,7 +27,7 @@
             <option value="malaga">Malaga</option>
             <option value="magaluf">Magaluf</option>
             <option value="halmstad">Halmstad</option>
-	    <option value="alicante">alicante</option>
+	    <option value="alicante">Alicante</option>
         </select>
 
         <label for="budgetCategory">Välj priskategori:</label>
@@ -58,6 +58,37 @@
             }
 
             const aktiviteter = {
+falun: {
+    gratis: [
+        gLink('Promenad runt sjön Runn', 'Sjötur & natur'),
+        gLink('Strosa i Gamla stan', 'Historisk stadsdel'),
+        gLink('Besök Stora Kopparbergs kyrka', 'Kyrkobesök'),
+        gLink('Stadsbiblioteket i Falun', 'Bibliotek & kultur'),
+        gLink('Falukvarteren promenad', 'Kultur & arkitektur')
+    ],
+    låg: [
+        gLink('Guidad Gruvtur i Falu Gruva', 'Historisk gruvtur'),
+        gLink('Entré till Dalarnas museum', 'Kultur & historia'),
+        gLink('Kaffe & fika på Slakteriet', 'Fikapaus'),
+        gLink('Minigolf på Lugnet', 'Familjeaktivitet'),
+        gLink('Cykeluthyrning vid Lugnet', 'Cykeltur')
+    ],
+    medel: [
+        gLink('Kajakuthyrning på sjön Runn', 'Vattenaktivitet'),
+        gLink('Stand‑up paddle board på Runn', 'Vattenlek'),
+        gLink('Matlagningskurs på Folkhögskolan', 'Kurs'),
+        gLink('Guidad cykelutflykt i Dalarna', 'Utflykt'),
+        gLink('Äventyrspark CPU Äventyr', 'Hinderbana')
+    ],
+    hög: [
+        gLink('Ballongflyg över Falun', 'Äventyrsaktivitet'),
+        gLink('Helikoptertur över Dalarna', 'Äventyrsaktivitet'),
+        gLink('Spa‑dag på Dalecarlia Spa', 'Spa & relax'),
+        gLink('Privat historisk rundtur', 'Rundtur'),
+        gLink('Gourmetmiddag på Grycksbo Herrgård', 'Mat & dryck')
+    ]
+},
+
 malaga: {
     gratis: [
         gLink('Stränder i Malaga', 'Strand'),
